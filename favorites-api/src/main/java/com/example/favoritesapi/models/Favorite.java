@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Builder
-@Table(name = "Favorites")
+@Table(name = "Favorite")
 public class Favorite {
 
     @Id
