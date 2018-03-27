@@ -3,6 +3,7 @@
   margin: 0;
   font-family: 'Montserrat', sans-serif;
   box-sizing: border-box;
+  font-weight: normal;
 }
 
 div.container {
@@ -24,4 +25,29 @@ main {
 section.card-display {
   background: aqua;
   width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+// FontCard
+div.font-card {
+  background: beige;
+  margin: 10px;
+  flex-grow: 1;
+  flex-basis: 300px;
+  height: 300px;
+  * {
+    text-transform: capitalize;
+  }
+  h1 {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 28px;
+  }
+  p {
+    font-size: 22px;
+    font-style: italic;
+    text-align: center;
+  }
 }

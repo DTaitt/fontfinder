@@ -9,6 +9,7 @@ export default function CardDisplay(props) {
                 props.fontsData.map((font) => {
                     return (
                         <FontCard 
+                            key = {font.family}
                             id = {font.family}
                             family = {font.family}
                             category = {font.category}
