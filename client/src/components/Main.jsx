@@ -29,7 +29,7 @@ export default class Main extends Component {
                 <div className="container">
                     {
                         this.state.isFontsDataLoaded === true
-                        ? <CardDisplay />
+                        ? <CardDisplay fontsData = {this.state.fontsData} />
                         : null
                     }
                 </div>

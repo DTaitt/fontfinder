@@ -14,5 +14,6 @@ header {
 main {
   padding: 50px 0; }
 
-div.card-display {
-  background: aqua; }
+section.card-display {
+  background: aqua;
+  width: 70%; }

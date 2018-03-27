@@ -1,9 +1,22 @@
 import React from 'react';
 
-export default function CardDisplay() {
+import FontCard from './FontCard';
+
+export default function CardDisplay(props) {
     return(
         <section className="card-display">
-        fdsafdaf
+            {
+                props.fontsData.map((font) => {
+                    return (
+                        <FontCard 
+                            id = {font.family}
+                            family = {font.family}
+                            category = {font.category}
+                            url = {`https://fonts.google.com/specimen/${font.family}`}
+                        />
+                    )
+                })
+            }
         </section>
     )
 }
