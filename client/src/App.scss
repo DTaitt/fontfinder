@@ -6,6 +6,14 @@
   font-weight: normal;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
+}
+
+ul,li {
+  list-style: none;
+}
+
 div.container {
   margin: 0 60px;
 }
@@ -19,6 +27,10 @@ header {
 // Main
 main {
   padding: 50px 0;
+  display: flex;
+  div.container {
+    display: flex;
+  }
 }
 
 // Card Display
@@ -36,7 +48,7 @@ div.font-card {
   margin: 10px;
   flex-grow: 1;
   flex-basis: 300px;
-  height: 300px;
+  height: 200px;
   * {
     text-transform: capitalize;
   }
@@ -49,5 +61,24 @@ div.font-card {
     font-size: 22px;
     font-style: italic;
     text-align: center;
+  }
+}
+
+// Sidebar 
+aside.sidebar {
+  width: 30%;
+  background: burlywood;
+  padding: 10px;
+} 
+
+// FavCard
+div.favorite {
+  padding: 10px;
+  h2 {
+    padding: 5px;
+  }
+  li {
+    background: bisque;
+    margin: 5px 0;
   }
 }
