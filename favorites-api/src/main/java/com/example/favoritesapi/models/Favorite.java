@@ -19,14 +19,30 @@ public class Favorite {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "family")
-    private String family;
+    @Column(name = "fontfamily")
+    private String fontfamily;
 
-    @Column(name = "category")
-    private String category;
+    @Column(name = "typeface")
+    private String typeface;
 
-    public Favorite(String family, String category) {
-        this.family = family;
-        this.category = category;
+    public Favorite(String fontfamily, String typeface) {
+        this.fontfamily = fontfamily;
+        this.typeface = typeface;
+    }
+
+    public String getFontFamily() {
+        return fontfamily;
+    }
+
+    public String getTypeFace() {
+        return typeface;
+    }
+
+    public void setFontFamily(String fontfamily) {
+        this.fontfamily = fontfamily;
+    }
+
+    public void setTypeFace(String typeface) {
+        this.typeface = typeface;
     }
 }

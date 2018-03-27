@@ -5,10 +5,12 @@ buildscript {
 	repositories {
 		mavenCentral()
 		jcenter()
+
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 		classpath "com.avast.gradle:gradle-docker-compose-plugin:0.6.17"
+
 	}
 }
 
@@ -21,7 +23,9 @@ apply plugin: 'docker-compose'
 dockerCompose {
 	useComposeFiles = ['docker-compose.yml']
 }
+
 dockerCompose.isRequiredBy(test)
+
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
@@ -31,24 +35,57 @@ repositories {
 	mavenCentral()
 }
 
+
+
+
+
+
+
 dependencies {
-	compile 'org.springframework.boot:spring-boot-starter-web'
-	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-web')
 
 	compileOnly 'org.projectlombok:lombok'
 
-	testCompile 'org.springframework.boot:spring-boot-starter-test'
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile 'io.rest-assured:rest-assured:3.0.6'
+
 
 	runtime 'org.postgresql:postgresql'
 	runtime 'org.springframework.boot:spring-boot-devtools'
+
 }
 
 task waitForFavoritesAPI(type: Exec) {
 	commandLine './wait-for-api.sh','http://localhost:8080/favorites', 'Favorites API'
 }
-test {
-	dependsOn waitForFavoritesAPI
+
+task runFavoritesAPITests(type: Exec) {
+	workingDir './favorites-api'
+	commandLine './gradlew', 'test'
 }
 
+task allTests(type: Test) {
+	dependsOn cleanTest
+	dependsOn waitForFavoritesAPI
+	dependsOn runFavoritesAPITests
 
+	testLogging {
+		exceptionFormat "full"
+		events "skipped", "passed", "failed"
+		displayGranularity 2
+	}
+}
 
+test {
+	dependsOn cleanTest
+	dependsOn waitForFavoritesAPI
+
+	testLogging {
+		exceptionFormat "full"
+		events "skipped", "passed", "failed"
+		displayGranularity 2
+	}
+}
+
+dockerCompose.isRequiredBy(allTests)
