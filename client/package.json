@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
+    "flow": "^0.2.3",
     "material-ui": "^1.0.0-beta.38",
     "node-sass-chokidar": "^1.2.2",
     "npm-run-all": "^4.1.2",
