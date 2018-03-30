@@ -17,8 +17,11 @@ export default class FavCard extends Component {
                                 return(
                                     <FavItem 
                                         key = {fav.id}
+                                        id = {fav.id}
                                         family = {fav.fontFamily}
                                         category = {fav.typeFace}
+                                        url = {`https://fonts.google.com/specimen/${fav.fontFamily}`}
+                                        deleteFavorite={this.props.deleteFavorite}
                                     />
                                 )
                             })

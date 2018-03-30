@@ -52,40 +52,42 @@ public class FavoritesControllerTest {
     @Before
     public void setUp() {
         Favorite firstFavorite = new Favorite(
-                "some font family",
-                "some typeface"
+                "my id",
+                "a font",
+                "a category",
+                "a url"
         );
 
         Favorite secondFavorite = new Favorite(
-                "another font family",
-                "another typeface"
+                "another id",
+                "another font",
+                "another category",
+                "another url"
         );
 
         newFavorite = new Favorite(
-                "new font family",
-                "new typeface"
+                "new id",
+                "a new font",
+                "a new category",
+                "a new url"
         );
         given(mockFavoriteRepository.save(newFavorite)).willReturn(newFavorite);
-
-        updatedSecondFavorite = new Favorite(
-                "updated font family",
-                "updated typeface"
-        );
-        given(mockFavoriteRepository.save(updatedSecondFavorite)).willReturn(updatedSecondFavorite);
 
         Iterable<Favorite> mockFavorites =
                 Stream.of(firstFavorite, secondFavorite).collect(Collectors.toList());
 
         given(mockFavoriteRepository.findAll()).willReturn(mockFavorites);
-        given(mockFavoriteRepository.findOne(1L)).willReturn(firstFavorite);
-        given(mockFavoriteRepository.findOne(4L)).willReturn(null);
+        given(mockFavoriteRepository.findOne(firstFavorite.getId())).willReturn(firstFavorite);
+        given(mockFavoriteRepository.findOne("doesn't exist")).willReturn(null);
         doAnswer(invocation -> {
             throw new EmptyResultDataAccessException("ERROR MESSAGE FROM MOCK!!!", 1234);
-        }).when(mockFavoriteRepository).delete(4L);
+        }).when(mockFavoriteRepository).delete("doesn't exist");
 
 
     }
 
+
+    // Get Happy Tests
     @Test
     public void findAllFavorites_success_returnsStatusOK() throws Exception {
 
@@ -102,22 +104,41 @@ public class FavoritesControllerTest {
                 .andExpect(jsonPath("$", hasSize(2)));
     }
 
-//    @Test
-//    public void findAllFavorites_success_returnFontFamilyForEachFavorite() throws Exception {
-//
-//        this.mockMvc
-//                .perform(get("/"))
-//                .andExpect(jsonPath("$[0].fontfamily", is("some font family")));
-//    }
-
     @Test
-    public void findAllFavorites_success_returnTypeFaceForEachFavorite() throws Exception {
+    public void findAllFavorites_success_returnFamilyForEachFavorite() throws Exception {
 
         this.mockMvc
                 .perform(get("/"))
-                .andExpect(jsonPath("$[0].typeFace", is("some typeface")));
+                .andExpect(jsonPath("$[0].family", is("a font")));
+
+        this.mockMvc
+                .perform(get("/"))
+                .andExpect(jsonPath("$[1].family", is("another font")));
     }
 
+    @Test
+    public void findAllFavorites_success_returnCategoryForEachFavorite() throws Exception {
+
+        this.mockMvc
+                .perform(get("/"))
+                .andExpect(jsonPath("$[0].category", is("a category")));
+
+        this.mockMvc
+                .perform(get("/"))
+                .andExpect(jsonPath("$[1].category", is("another category")));
+    }
+
+    @Test
+    public void findAllFavorites_success_returnUrlForEachFavorite() throws Exception {
+
+        this.mockMvc
+                .perform(get("/"))
+                .andExpect(jsonPath("$[0].url", is("a url")));
+
+        this.mockMvc
+                .perform(get("/"))
+                .andExpect(jsonPath("$[1].url", is("another url")));
+    }
 
     @Test
     public void findFavoriteById_success_returnsStatusOK() throws Exception {
@@ -127,21 +148,31 @@ public class FavoritesControllerTest {
                 .andExpect(status().isOk());
     }
 
-//    @Test
-//    public void findFavoriteById_success_returnFontFamily() throws Exception {
-//
-//        this.mockMvc
-//                .perform(get("/1"))
-//                .andExpect(jsonPath("$.fontfamily", is("some font family")));
-//    }
-
     @Test
-    public void findFavoriteById_success_returnTypeFace() throws Exception {
+    public void findFavoriteById_success_returnFamily() throws Exception {
 
         this.mockMvc
                 .perform(get("/1"))
-                .andExpect(jsonPath("$.typeFace", is("some typeface")));
+                .andExpect(jsonPath("$.family", is("a font")));
     }
+
+    @Test
+    public void findFavoriteById_success_returnCategory() throws Exception {
+
+        this.mockMvc
+                .perform(get("/1"))
+                .andExpect(jsonPath("$.category", is("a category")));
+    }
+
+    @Test
+    public void findFavoriteById_success_returnUrl() throws Exception {
+
+        this.mockMvc
+                .perform(get("/1"))
+                .andExpect(jsonPath("$.url", is("a url")));
+    }
+
+    // Get Unhappy Tests
 
     @Test
     public void findFavoriteById_failure_favoriteNotFoundReturns404() throws Exception {
@@ -150,6 +181,8 @@ public class FavoritesControllerTest {
                 .perform(get("/4"))
                 .andExpect(status().reason(containsString("Favorite with ID of 4 was not found!")));
     }
+
+    // Delete Happy Tests
 
     @Test
     public void deleteFavoriteById_success_returnsStatusOk() throws Exception {
@@ -164,8 +197,10 @@ public class FavoritesControllerTest {
 
         this.mockMvc.perform(delete("/1"));
 
-        verify(mockFavoriteRepository, times(1)).delete(1L);
+        verify(mockFavoriteRepository, times(1)).delete("my id");
     }
+
+    // Delete Unhappy Tests
 
     @Test
     public void deleteFavoriteById_failure_favoriteNotFoundReturns404() throws Exception {
@@ -174,6 +209,8 @@ public class FavoritesControllerTest {
                 .perform(delete("/4"))
                 .andExpect(status().isNotFound());
     }
+
+    // Create Happy Tests
 
     @Test
     public void createFavorite_success_returnsStatusOk() throws Exception {
@@ -187,20 +224,8 @@ public class FavoritesControllerTest {
                 .andExpect(status().isOk());
     }
 
-//    @Test
-//    public void createFavorite_success_returnsFontFamily() throws Exception {
-//
-//        this.mockMvc
-//                .perform(
-//                        post("/")
-//                                .contentType(MediaType.APPLICATION_JSON)
-//                                .content(jsonObjectMapper.writeValueAsString(newFavorite))
-//                )
-//                .andExpect(jsonPath("$.fontfamily", is("new font family")));
-//    }
-
     @Test
-    public void createFavorite_success_returnsTypeFace() throws Exception {
+    public void createFavorite_success_returnsFamily() throws Exception {
 
         this.mockMvc
                 .perform(
@@ -208,71 +233,32 @@ public class FavoritesControllerTest {
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(jsonObjectMapper.writeValueAsString(newFavorite))
                 )
-                .andExpect(jsonPath("$.typeFace", is("new type face")));
+                .andExpect(jsonPath("$.family", is("a new font")));
     }
 
     @Test
-    public void updateFavoriteById_success_returnsStatusOk() throws Exception {
+    public void createFavorite_success_returnsCategory() throws Exception {
 
         this.mockMvc
                 .perform(
-                        patch("/1")
+                        post("/")
                                 .contentType(MediaType.APPLICATION_JSON)
-                                .content(jsonObjectMapper.writeValueAsString(updatedSecondFavorite))
+                                .content(jsonObjectMapper.writeValueAsString(newFavorite))
                 )
-                .andExpect(status().isOk());
-    }
-
-//    @Test
-//    public void updateFavoriteById_success_returnsupdated typefaceFontFamily() throws Exception {
-//
-//        this.mockMvc
-//                .perform(
-//                        patch("/1")
-//                                .contentType(MediaType.APPLICATION_JSON)
-//                                .content(jsonObjectMapper.writeValueAsString(updatedSecondFavorite))
-//                )
-//                .andExpect(jsonPath("$.fontfamily", is("updated font family")));
-//    }
-
-    @Test
-    public void updateFavoriteById_success_returnsupdated typefaceTypeFace() throws Exception {
-
-        this.mockMvc
-                .perform(
-                        patch("/1")
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .content(jsonObjectMapper.writeValueAsString(updatedSecondFavorite))
-                )
-                .andExpect(jsonPath("$.typeFace", is("updated typeface")));
+                .andExpect(jsonPath("$.category", is("a new category")));
     }
 
     @Test
-    public void updateFavoriteById_failure_favoriteNotFoundReturns404() throws Exception {
+    public void createFavorite_success_returnsUrl() throws Exception {
 
         this.mockMvc
                 .perform(
-                        patch("/4")
+                        post("/")
                                 .contentType(MediaType.APPLICATION_JSON)
-                                .content(jsonObjectMapper.writeValueAsString(updatedSecondFavorite))
+                                .content(jsonObjectMapper.writeValueAsString(newFavorite))
                 )
-                .andExpect(status().isNotFound());
+                .andExpect(jsonPath("$.url", is("a new url")));
     }
-
-    @Test
-    public void updateFavoriteById_failure_favoriteNotFoundReturnsNotFoundErrorMessage() throws Exception {
-
-        this.mockMvc
-                .perform(
-                        patch("/4")
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .content(jsonObjectMapper.writeValueAsString(updatedSecondFavorite))
-                )
-                .andExpect(status().reason(containsString("Favorite with ID of 4 was not found!")));
-    }
-
-
-
 
 }
 

@@ -2,9 +2,13 @@ import React from 'react';
 
 export default function FavItem(props){
     return(
-        <li>
-            <p class='family'>{props.family}</p>
-            <p class='category'>{props.category}</p>
+        <li
+            onClick={() => {props.deleteFavorite(props.id)}}
+        >
+            {/* <a href={props.url} target='_'> */}
+                <p className='family'>{props.family}</p>
+                <p className='category'>{props.category}</p>
+            {/* </a> */}
         </li>
     )
 }

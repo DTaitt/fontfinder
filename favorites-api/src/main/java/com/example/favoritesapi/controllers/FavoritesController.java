@@ -26,9 +26,9 @@ public class FavoritesController {
     }
 
     @GetMapping("/{favoriteId}")
-    public Favorite findFavoriteById(@PathVariable Long favoriteId) throws NotFoundException {
+    public Favorite findFavoriteById(@PathVariable String favoriteId) throws NotFoundException {
 
-        Favorite foundFavorite = favoriteRepository.findOne(favoriteId);
+        Favorite foundFavorite = favoriteRepository.findOne(String.valueOf(favoriteId));
 
         if (foundFavorite == null) {
             throw new NotFoundException("Favorite with ID of " + favoriteId + " was not found!");
@@ -39,26 +39,28 @@ public class FavoritesController {
     }
 
     @DeleteMapping("/{favoriteId}")
-    public HttpStatus deleteFavoriteById(@PathVariable Long favoriteId) throws EmptyResultDataAccessException {
-        favoriteRepository.delete(favoriteId);
+    public HttpStatus deleteFavoriteById(@PathVariable String favoriteId) throws EmptyResultDataAccessException {
+        favoriteRepository.delete(String.valueOf(favoriteId));
         return HttpStatus.OK;
     }
 
     @PostMapping("/")
     public Favorite createNewFavorite(@RequestBody Favorite newFavorite) {
+        System.out.println("testing create");
+        System.out.println(favoriteRepository.save(newFavorite));
         return favoriteRepository.save(newFavorite);
     }
 
     @PatchMapping("/{favoriteId}")
-    public Favorite updateFavoriteById(@PathVariable Long favoriteId, @RequestBody Favorite favoriteRequest) throws NotFoundException {
-        Favorite favoriteFromDb = favoriteRepository.findOne(favoriteId);
+    public Favorite updateFavoriteById(@PathVariable String favoriteId, @RequestBody Favorite favoriteRequest) throws NotFoundException {
+        Favorite favoriteFromDb = favoriteRepository.findOne(String.valueOf(favoriteId));
 
         if (favoriteFromDb == null) {
             throw new NotFoundException("Favorite with ID of " + favoriteId + " was not found!");
         }
 
-        favoriteFromDb.setFontFamily(favoriteRequest.getFontFamily());
-        favoriteFromDb.setTypeFace(favoriteRequest.getTypeFace());
+        favoriteFromDb.setFamily(favoriteRequest.getFamily());
+        favoriteFromDb.setCategory(favoriteRequest.getCategory());
 
         return favoriteRepository.save(favoriteFromDb);
     }

@@ -10,10 +10,11 @@ export default function CardDisplay(props) {
                     return (
                         <FontCard 
                             key = {font.family}
-                            id = {font.family}
+                            // id = {font.family}
                             family = {font.family}
                             category = {font.category}
                             url = {`https://fonts.google.com/specimen/${font.family}`}
+                            addFavorite={props.addFavorite}
                         />
                     )
                 })

@@ -6,43 +6,65 @@ import javax.persistence.*;
 
 
 @Data
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
 @Builder
-@Table(name = "Favorite")
+@Table(name = "Favorites")
 public class Favorite {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private String id;
 
-    @Column(name = "fontfamily")
-    private String fontfamily;
+    @Column(name = "family")
+    private String family;
 
-    @Column(name = "typeface")
-    private String typeface;
+    @Column(name = "category")
+    private String category;
 
-    public Favorite(String fontfamily, String typeface) {
-        this.fontfamily = fontfamily;
-        this.typeface = typeface;
+    @Column(name = "url")
+    private String url;
+
+    public Favorite(String id, String family, String category, String url) {
+        this.id = id;
+        this.family = family;
+        this.category = category;
+        this.url = url;
     }
 
-    public String getFontFamily() {
-        return fontfamily;
+    public String getId() {
+        return id;
     }
 
-    public String getTypeFace() {
-        return typeface;
+    public String getFamily() {
+        return family;
     }
 
-    public void setFontFamily(String fontfamily) {
-        this.fontfamily = fontfamily;
+    public String getCategory() {
+        return category;
     }
 
-    public void setTypeFace(String typeface) {
-        this.typeface = typeface;
+    public String getUrl() {
+        return url;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setFamily(String family) {
+        this.family = family;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

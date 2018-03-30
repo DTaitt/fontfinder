@@ -5,17 +5,30 @@
   box-sizing: border-box;
   font-weight: normal; }
 
+i {
+  display: block; }
+
+.fav {
+  color: red; }
+
 h1, h2, h3, h4, h5, h6 {
   text-align: center; }
 
 ul, li {
   list-style: none; }
 
+a {
+  text-decoration: none;
+  color: black; }
+
+a:hover {
+  color: #0D47A1; }
+
 div.container {
   margin: 0 60px; }
 
 header {
-  background: cadetblue;
+  background: #2196F3;
   padding: 30px 0; }
 
 main {
@@ -25,18 +38,22 @@ main {
     display: flex; }
 
 section.card-display {
-  background: aqua;
+  background: #FFE0B2;
   width: 70%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between; }
 
 div.font-card {
-  background: beige;
   margin: 10px;
-  flex-grow: 1;
+  padding: 0 5px;
   flex-basis: 300px;
-  height: 200px; }
+  flex-grow: 1;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; }
   div.font-card * {
     text-transform: capitalize; }
   div.font-card h1 {
@@ -47,16 +64,31 @@ div.font-card {
     font-size: 22px;
     font-style: italic;
     text-align: center; }
+  div.font-card .fa-heart {
+    font-size: 30px;
+    margin: auto 0 15px 0; }
 
 aside.sidebar {
   width: 30%;
-  background: burlywood;
+  background: #FFE0B2;
   padding: 10px; }
 
 div.favorite {
   padding: 10px; }
+  div.favorite * {
+    text-transform: capitalize; }
   div.favorite h2 {
     padding: 5px; }
   div.favorite li {
-    background: bisque;
-    margin: 5px 0; }
+    background: #80D8FF;
+    margin: 5px 0;
+    padding: 5px; }
+  div.favorite p {
+    padding: 5px 2px; }
+  div.favorite p.family {
+    font-size: 20px;
+    font-weight: bold; }
+  div.favorite p.category {
+    font-style: italic; }
+  div.favorite a {
+    width: 100%; }

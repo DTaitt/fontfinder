@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @EnableEurekaClient
 @RestController
-public interface FavoriteRepository extends CrudRepository<Favorite, Long> {
+public interface FavoriteRepository extends CrudRepository<Favorite, String> {
 
 }

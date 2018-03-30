@@ -34,18 +34,47 @@ export default class Main extends Component {
         })
     }
 
+    async addFavorite(fav) {
+        console.log(fav)
+        try {
+            let newFav = await axios.get(`/favorites`, {
+                family: this.props.family,
+                category: this.props.category,
+                url: this.props.url,
+            });
+            console.log(newFav)
+        } catch (error) {   
+            console.log(error)
+        }
+    }
+
+    async deleteFavorite(id) {
+        try {
+            await axios.delete(`/favorites/${id}`)
+            
+            // const updatedFavoritesList = [...this.state.favoritesData]
+            // updatedFavoritesList.splice(index, 1)
+            // this.setState({favoritesData: updatedFavoritesList})
+
+        } catch (error) {
+            console.log(`Error deleting Idea with ID of ${id}`)
+            console.log(error)
+        }
+}
+
     render() {
+        console.log(this.state)
         return(
             <main>
                 <div className="container">
                     {
                         this.state.isFontsDataLoaded === true
-                        ? <CardDisplay fontsData = {this.state.fontsData} />
+                        ? <CardDisplay fontsData = {this.state.fontsData} addFavorite={this.addFavorite} />
                         : null
                     }
                     {
                         this.state.isFavoritesDataLoaded === true
-                        ? <Sidebar favoritesData = {this.state.favoritesData} />
+                        ? <Sidebar favoritesData = {this.state.favoritesData} deleteFavorite={this.deleteFavorite} />
                         : null
                     }     
                 </div>

@@ -1,5 +1,7 @@
-CREATE TABLE Favorite (
-  ID serial,
-  fontfamily VARCHAR(100) NOT NULL,
-  typeface VARCHAR(100) NOT NULL
+CREATE TABLE Favorites (
+  PRIMARY KEY (id),
+  id VARCHAR(100),
+  family VARCHAR(100) NOT NULL,
+  "category" VARCHAR(100) NOT NULL,
+  url VARCHAR(100) NOT NULL
 );

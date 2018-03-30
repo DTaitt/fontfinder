@@ -6,6 +6,14 @@
   font-weight: normal;
 }
 
+i {
+  display: block;
+}
+
+.fav {
+  color: red;
+}
+
 h1, h2, h3, h4, h5, h6 {
   text-align: center;
 }
@@ -14,13 +22,22 @@ ul,li {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: #0D47A1;
+}
+
 div.container {
   margin: 0 60px;
 }
 
 // Header 
 header {
-  background: cadetblue;
+  background: #2196F3;
   padding: 30px 0;
 }
 
@@ -35,7 +52,7 @@ main {
 
 // Card Display
 section.card-display {
-  background: aqua;
+  background: #FFE0B2;
   width: 70%;
   display: flex;
   flex-wrap: wrap;
@@ -44,11 +61,18 @@ section.card-display {
 
 // FontCard
 div.font-card {
-  background: beige;
   margin: 10px;
-  flex-grow: 1;
+  padding: 0 5px;
+  // flex-grow: 1;
+  // // flex-basis: 300px;
+  // flex: 1;
   flex-basis: 300px;
+  flex-grow: 1;
   height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   * {
     text-transform: capitalize;
   }
@@ -62,23 +86,44 @@ div.font-card {
     font-style: italic;
     text-align: center;
   }
+  .fa-heart {
+    font-size: 30px;
+    margin: auto 0 15px 0;
+  }
 }
 
 // Sidebar 
 aside.sidebar {
   width: 30%;
-  background: burlywood;
+  background: #FFE0B2;
   padding: 10px;
 } 
 
 // FavCard
 div.favorite {
   padding: 10px;
+  * {
+    text-transform: capitalize;
+  }
   h2 {
     padding: 5px;
   }
   li {
-    background: bisque;
+    background: #80D8FF;
     margin: 5px 0;
+    padding: 5px;
+  }
+  p {
+    padding: 5px 2px;
+  }
+  p.family {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  p.category {
+    font-style: italic;
+  }
+  a {
+    width: 100%;
   }
 }
