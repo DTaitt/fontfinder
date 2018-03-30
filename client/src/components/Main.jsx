@@ -37,11 +37,7 @@ export default class Main extends Component {
     async addFavorite(fav) {
         console.log(fav)
         try {
-            let newFav = await axios.get(`/favorites`, {
-                family: this.props.family,
-                category: this.props.category,
-                url: this.props.url,
-            });
+            let newFav = await axios.post(`/favorites`, fav);
             console.log(newFav)
         } catch (error) {   
             console.log(error)

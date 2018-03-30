@@ -29,8 +29,9 @@ export default class FontCard extends Component{
                         () => {
                             console.log('clicked')
                             this.props.addFavorite({
-                                fontFamily: this.props.family,
-                                typeFace: this.props.category,
+                                id: this.props.id,
+                                family: this.props.family,
+                                category: this.props.category,
                                 url: this.props.url
                             })
                         }
