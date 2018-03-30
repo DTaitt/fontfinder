@@ -5,7 +5,6 @@ import FavItem from './FavItem';
 
 export default class FavCard extends Component {
     render() {
-        console.log(this.props)
         return(
             <Card className='favorite'>
                 <h2>Favorites</h2>
@@ -13,7 +12,6 @@ export default class FavCard extends Component {
                     <ul className="favorites">
                         {
                             this.props.favData.map((fav) => {
-                                console.log(fav)
                                 return(
                                     <FavItem 
                                         key = {fav.id}

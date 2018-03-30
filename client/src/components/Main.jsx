@@ -11,7 +11,11 @@ export default class Main extends Component {
         isFontsDataLoaded: false,
         favData:[],
         isfavDataLoaded:false,
+        test:0
     }
+
+    addFavorite = this.addFavorite.bind(this);
+    deleteFavorite = this.deleteFavorite.bind(this);
 
     componentDidMount() {
         this.fetchFontsData('popularity');
@@ -35,45 +39,49 @@ export default class Main extends Component {
     }
 
     async addFavorite(fav) {
-        console.log(fav)
         try {
-            let newFav = await axios.post(`/favorites`, fav);
-            console.log(newFav)
+            await axios.post(`/favorites`, fav);
         } catch (error) {   
             console.log(error)
         }
+        this.setState((prevState)=> ({
+            favData: [...prevState.favData, fav],
+        }))
+        
     }
 
     async deleteFavorite(id) {
         try {
             await axios.delete(`/favorites/${id}`)
-            
-            // const updatedFavoritesList = [...this.state.favData]
-            // updatedFavoritesList.splice(index, 1)
-            // this.setState({favData: updatedFavoritesList})
-
         } catch (error) {
             console.log(`Error deleting Idea with ID of ${id}`)
             console.log(error)
         }
-}
+
+        this.setState((prevState) =>({
+            favData: prevState.favData.filter((fav) => {
+                return fav.id !== id;
+            })        
+        }))
+    }
 
     render() {
         console.log(this.state)
         return(
             <main>
-                <div className="container">
-                    {
-                        this.state.isFontsDataLoaded === true
-                        ? <CardDisplay fontsData = {this.state.fontsData} addFavorite={this.addFavorite} />
-                        : null
-                    }
-                    {
-                        this.state.isfavDataLoaded === true
-                        ? <Sidebar favData = {this.state.favData} deleteFavorite={this.deleteFavorite} />
-                        : null
-                    }     
-                </div>
+                {
+                    // displays the container div only if the fonts data and favorites data is loaded
+                    (
+                        this.state.isFontsDataLoaded  && this.state.isfavDataLoaded
+                    )  
+                    &&
+                    (
+                        <div className="container">
+                            <CardDisplay fontsData = {this.state.fontsData} addFavorite={this.addFavorite} />
+                            <Sidebar favData = {this.state.favData} deleteFavorite={this.deleteFavorite} />
+                        </div>
+                    )
+                }
             </main>
         )
     }
