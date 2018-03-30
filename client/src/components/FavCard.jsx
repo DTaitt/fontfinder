@@ -12,15 +12,15 @@ export default class FavCard extends Component {
                 <div className="body">
                     <ul className="favorites">
                         {
-                            this.props.favoritesData.map((fav) => {
+                            this.props.favData.map((fav) => {
                                 console.log(fav)
                                 return(
                                     <FavItem 
                                         key = {fav.id}
                                         id = {fav.id}
-                                        family = {fav.fontFamily}
-                                        category = {fav.typeFace}
-                                        url = {`https://fonts.google.com/specimen/${fav.fontFamily}`}
+                                        family = {fav.family}
+                                        category = {fav.category}
+                                        url = {`https://fonts.google.com/specimen/${fav.family}`}
                                         deleteFavorite={this.props.deleteFavorite}
                                     />
                                 )

@@ -22,7 +22,6 @@ export default class FontCard extends Component{
     
 
     render(){
-        console.log(this.props)
         return(
             <Card 
                 className="font-card"

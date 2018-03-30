@@ -9,8 +9,8 @@ export default class Main extends Component {
     state = {
         fontsData:[],
         isFontsDataLoaded: false,
-        favoritesData:[],
-        isFavoritesDataLoaded:false,
+        favData:[],
+        isfavDataLoaded:false,
     }
 
     componentDidMount() {
@@ -29,8 +29,8 @@ export default class Main extends Component {
     async fetchToFavoritesAPI() {
         let res = await axios.get(`/favorites`);
         this.setState({
-            favoritesData: res.data,
-            isFavoritesDataLoaded: true,
+            favData: res.data,
+            isfavDataLoaded: true,
         })
     }
 
@@ -52,9 +52,9 @@ export default class Main extends Component {
         try {
             await axios.delete(`/favorites/${id}`)
             
-            // const updatedFavoritesList = [...this.state.favoritesData]
+            // const updatedFavoritesList = [...this.state.favData]
             // updatedFavoritesList.splice(index, 1)
-            // this.setState({favoritesData: updatedFavoritesList})
+            // this.setState({favData: updatedFavoritesList})
 
         } catch (error) {
             console.log(`Error deleting Idea with ID of ${id}`)
@@ -73,8 +73,8 @@ export default class Main extends Component {
                         : null
                     }
                     {
-                        this.state.isFavoritesDataLoaded === true
-                        ? <Sidebar favoritesData = {this.state.favoritesData} deleteFavorite={this.deleteFavorite} />
+                        this.state.isfavDataLoaded === true
+                        ? <Sidebar favData = {this.state.favData} deleteFavorite={this.deleteFavorite} />
                         : null
                     }     
                 </div>

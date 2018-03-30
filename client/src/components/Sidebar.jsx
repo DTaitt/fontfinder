@@ -5,7 +5,7 @@ export default class Sidebar extends Component{
     render() {
         return(
             <aside className="sidebar">
-                <FavCard favoritesData = {this.props.favoritesData} deleteFavorite={this.props.deleteFavorite} />
+                <FavCard favData = {this.props.favData} deleteFavorite={this.props.deleteFavorite} />
             </aside>
         )
     }

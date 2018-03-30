@@ -28,7 +28,7 @@ public class FavoritesController {
     @GetMapping("/{favoriteId}")
     public Favorite findFavoriteById(@PathVariable String favoriteId) throws NotFoundException {
 
-        Favorite foundFavorite = favoriteRepository.findOne(String.valueOf(favoriteId));
+        Favorite foundFavorite = favoriteRepository.findOne(favoriteId);
 
         if (foundFavorite == null) {
             throw new NotFoundException("Favorite with ID of " + favoriteId + " was not found!");
@@ -40,7 +40,7 @@ public class FavoritesController {
 
     @DeleteMapping("/{favoriteId}")
     public HttpStatus deleteFavoriteById(@PathVariable String favoriteId) throws EmptyResultDataAccessException {
-        favoriteRepository.delete(String.valueOf(favoriteId));
+        favoriteRepository.delete(favoriteId);
         return HttpStatus.OK;
     }
 
@@ -53,7 +53,7 @@ public class FavoritesController {
 
     @PatchMapping("/{favoriteId}")
     public Favorite updateFavoriteById(@PathVariable String favoriteId, @RequestBody Favorite favoriteRequest) throws NotFoundException {
-        Favorite favoriteFromDb = favoriteRepository.findOne(String.valueOf(favoriteId));
+        Favorite favoriteFromDb = favoriteRepository.findOne(favoriteId);
 
         if (favoriteFromDb == null) {
             throw new NotFoundException("Favorite with ID of " + favoriteId + " was not found!");

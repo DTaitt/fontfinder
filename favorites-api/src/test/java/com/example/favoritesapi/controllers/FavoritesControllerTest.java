@@ -52,22 +52,22 @@ public class FavoritesControllerTest {
     @Before
     public void setUp() {
         Favorite firstFavorite = new Favorite(
-                "my id",
-                "a font",
+                "aFamily",
+                "aFamily",
                 "a category",
                 "a url"
         );
 
         Favorite secondFavorite = new Favorite(
-                "another id",
-                "another font",
+                "anotherFamily",
+                "anotherFamily",
                 "another category",
                 "another url"
         );
 
         newFavorite = new Favorite(
-                "new id",
-                "a new font",
+                "aNewFamily",
+                "aNewFamily",
                 "a new category",
                 "a new url"
         );
@@ -105,15 +105,27 @@ public class FavoritesControllerTest {
     }
 
     @Test
+    public void findAllFavorites_success_returnIdForEachFavorite() throws Exception {
+
+        this.mockMvc
+                .perform(get("/"))
+                .andExpect(jsonPath("$[0].id", is("aFamily")));
+
+        this.mockMvc
+                .perform(get("/"))
+                .andExpect(jsonPath("$[1].id", is("anotherFamily")));
+    }
+
+    @Test
     public void findAllFavorites_success_returnFamilyForEachFavorite() throws Exception {
 
         this.mockMvc
                 .perform(get("/"))
-                .andExpect(jsonPath("$[0].family", is("a font")));
+                .andExpect(jsonPath("$[0].family", is("aFamily")));
 
         this.mockMvc
                 .perform(get("/"))
-                .andExpect(jsonPath("$[1].family", is("another font")));
+                .andExpect(jsonPath("$[1].family", is("anotherFamily")));
     }
 
     @Test
@@ -144,7 +156,7 @@ public class FavoritesControllerTest {
     public void findFavoriteById_success_returnsStatusOK() throws Exception {
 
         this.mockMvc
-                .perform(get("/1"))
+                .perform(get("/aFamily"))
                 .andExpect(status().isOk());
     }
 
@@ -152,15 +164,15 @@ public class FavoritesControllerTest {
     public void findFavoriteById_success_returnFamily() throws Exception {
 
         this.mockMvc
-                .perform(get("/1"))
-                .andExpect(jsonPath("$.family", is("a font")));
+                .perform(get("/aFamily"))
+                .andExpect(jsonPath("$.family", is("aFamily")));
     }
 
     @Test
     public void findFavoriteById_success_returnCategory() throws Exception {
 
         this.mockMvc
-                .perform(get("/1"))
+                .perform(get("/aFamily"))
                 .andExpect(jsonPath("$.category", is("a category")));
     }
 
@@ -168,7 +180,7 @@ public class FavoritesControllerTest {
     public void findFavoriteById_success_returnUrl() throws Exception {
 
         this.mockMvc
-                .perform(get("/1"))
+                .perform(get("/aFamily"))
                 .andExpect(jsonPath("$.url", is("a url")));
     }
 
@@ -178,8 +190,8 @@ public class FavoritesControllerTest {
     public void findFavoriteById_failure_favoriteNotFoundReturns404() throws Exception {
 
         this.mockMvc
-                .perform(get("/4"))
-                .andExpect(status().reason(containsString("Favorite with ID of 4 was not found!")));
+                .perform(get("/notAFamily"))
+                .andExpect(status().reason(containsString("Favorite with ID of notAFamily was not found!")));
     }
 
     // Delete Happy Tests
@@ -188,16 +200,16 @@ public class FavoritesControllerTest {
     public void deleteFavoriteById_success_returnsStatusOk() throws Exception {
 
         this.mockMvc
-                .perform(delete("/1"))
+                .perform(delete("/aFamily"))
                 .andExpect(status().isOk());
     }
 
     @Test
     public void deleteFavoriteById_success_deletesViaRepository() throws Exception {
 
-        this.mockMvc.perform(delete("/1"));
+        this.mockMvc.perform(delete("/aFamily"));
 
-        verify(mockFavoriteRepository, times(1)).delete("my id");
+        verify(mockFavoriteRepository, times(1)).delete("aFamily");
     }
 
     // Delete Unhappy Tests
@@ -206,7 +218,7 @@ public class FavoritesControllerTest {
     public void deleteFavoriteById_failure_favoriteNotFoundReturns404() throws Exception {
 
         this.mockMvc
-                .perform(delete("/4"))
+                .perform(delete("/notAFamily"))
                 .andExpect(status().isNotFound());
     }
 
@@ -233,7 +245,7 @@ public class FavoritesControllerTest {
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(jsonObjectMapper.writeValueAsString(newFavorite))
                 )
-                .andExpect(jsonPath("$.family", is("a new font")));
+                .andExpect(jsonPath("$.family", is("aNewFamily")));
     }
 
     @Test
