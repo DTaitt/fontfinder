@@ -62,7 +62,11 @@ dependencies {
 }
 
 task waitForFavoritesAPI(type: Exec) {
-	commandLine './wait-for-api.sh','http://localhost:8080/favorites', 'Favorites API'
+	commandLine './wait-for-favorites-api.sh','http://localhost:8080/favorites', 'Favorites API'
+}
+
+task waitForSetsAPI(type: Exec) {
+	commandLine './wait-for-sets-api.sh','http://localhost:8080/sets', 'Sets API'
 }
 
 task runFavoritesAPITests(type: Exec) {
@@ -70,10 +74,17 @@ task runFavoritesAPITests(type: Exec) {
 	commandLine './gradlew', 'test'
 }
 
+task runSetsAPITests(type: Exec) {
+	workingDir './sets-api'
+	commandLine './gradlew', 'test'
+}
+
 task allTests(type: Test) {
 	dependsOn cleanTest
 	dependsOn waitForFavoritesAPI
+	dependsOn waitForSetsAPI
 	dependsOn runFavoritesAPITests
+	dependsOn runSetsAPITests
 
 	testLogging {
 		exceptionFormat "full"
@@ -85,6 +96,7 @@ task allTests(type: Test) {
 test {
 	dependsOn cleanTest
 	dependsOn waitForFavoritesAPI
+	dependsOn waitForSetsAPI
 
 	testLogging {
 		exceptionFormat "full"
