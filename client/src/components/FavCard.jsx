@@ -27,7 +27,6 @@ export default class FavCard extends Component {
                     </ul>
                 </div>
             </Card>
-            // <div></div>
         )
     }
 }

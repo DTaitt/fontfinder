@@ -9,10 +9,6 @@ export default function FavItem(props){
                 <p className='family'>{props.family}</p>
                 <p className='category'>{props.category}</p>
             {/* </a> */}
-            <i
-                className='fas fa-times-circle'
-                onClick={() => {props.deleteFavorite(props.id)}}
-            ></i>
         </li>
     )
 }

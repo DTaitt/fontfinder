@@ -27,7 +27,7 @@ export default class FontCard extends Component{
                 className="font-card"
                 onClick={
                         () => {
-                            this.props.addFavorite({
+                             this.props.addFavorite({
                                 id: this.props.id,
                                 family: this.props.family,
                                 category: this.props.category,
@@ -40,11 +40,6 @@ export default class FontCard extends Component{
                     <h1 className="family">{this.props.family}</h1>
                 </a>
                 <p className="category">{this.props.category}</p>
-                <i 
-                    className="fas fa-heart"
-                    // onClick={() => {this.addToFavorites(this.props)}}
-                    
-                ></i>
             </Card>
         )
     }
