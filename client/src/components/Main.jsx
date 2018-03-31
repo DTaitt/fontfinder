@@ -38,15 +38,24 @@ export default class Main extends Component {
         })
     }
 
-    async addFavorite(fav) {
+    async addFavorite(newFav) {
         try {
-            await axios.post(`/favorites`, fav);
+            await axios.post(`/favorites`, newFav);
         } catch (error) {   
             console.log(error)
         }
-        this.setState((prevState)=> ({
-            favData: [...prevState.favData, fav],
-        }))
+             
+        let isInFav = null;
+
+        for(let i = 0; i < this.state.favData.length; i++){
+            (newFav.id === this.state.favData[i].id) && (isInFav = true)
+        }
+
+        (isInFav === null) 
+        && 
+        this.setState(prevState => ({
+            favData: [...prevState.favData, newFav],
+        })); 
         
     }
 
@@ -58,7 +67,7 @@ export default class Main extends Component {
             console.log(error)
         }
 
-        this.setState((prevState) =>({
+        this.setState((prevState) => ({
             favData: prevState.favData.filter((fav) => {
                 return fav.id !== id;
             })        
@@ -66,7 +75,6 @@ export default class Main extends Component {
     }
 
     render() {
-        console.log(this.state)
         return(
             <main>
                 {

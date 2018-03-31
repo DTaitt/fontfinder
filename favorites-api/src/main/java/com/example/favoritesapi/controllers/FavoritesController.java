@@ -46,8 +46,6 @@ public class FavoritesController {
 
     @PostMapping("/")
     public Favorite createNewFavorite(@RequestBody Favorite newFavorite) {
-        System.out.println("testing create");
-        System.out.println(favoriteRepository.save(newFavorite));
         return favoriteRepository.save(newFavorite);
     }
 

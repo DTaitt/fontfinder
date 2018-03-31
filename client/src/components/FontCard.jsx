@@ -27,7 +27,6 @@ export default class FontCard extends Component{
                 className="font-card"
                 onClick={
                         () => {
-                            console.log('clicked')
                             this.props.addFavorite({
                                 id: this.props.id,
                                 family: this.props.family,
