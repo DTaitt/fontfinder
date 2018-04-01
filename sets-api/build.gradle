@@ -38,7 +38,7 @@ dependencies {
 
 	compileOnly 'org.projectlombok:lombok'
 
-//	compile 'org.flywaydb:flyway-core'
+	compile 'org.flywaydb:flyway-core'
 
 	runtime 'org.postgresql:postgresql'
 
