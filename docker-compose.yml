@@ -39,20 +39,20 @@ services:
     environment:
       - GRADLE_USER_HOME=cache
       - SPRING_PROFILES_ACTIVE=dev
-#  sets-api:
-#    image: anapsix/alpine-java:8_jdk_unlimited
-#    ports:
-#      - '8082:8082'
-#    working_dir: /sets-api
-#    volumes:
-#      - ./sets-api:/sets-api
-#    depends_on:
-#      - eureka
-#      - postgresdev
-#    command: './gradlew bootRun'
-#    environment:
-#      - GRADLE_USER_HOME=cache
-#      - SPRING_PROFILES_ACTIVE=dev
+  sets-api:
+    image: anapsix/alpine-java:8_jdk_unlimited
+    ports:
+      - '8082:8082'
+    working_dir: /sets-api
+    volumes:
+      - ./sets-api:/sets-api
+    depends_on:
+      - eureka
+      - postgresdev
+    command: './gradlew bootRun'
+    environment:
+      - GRADLE_USER_HOME=cache
+      - SPRING_PROFILES_ACTIVE=dev
   postgresdev:
       image: postgres
       ports:
