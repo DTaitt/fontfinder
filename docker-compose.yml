@@ -47,8 +47,6 @@ services:
     volumes:
       - ./sets-api:/sets-api
     depends_on:
-      - eureka
-      - postgresdev
       - favorites-api
     command: './gradlew bootRun'
     environment:
