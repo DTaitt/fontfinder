@@ -12,8 +12,8 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Builder
-@Table(name = "sets")
-public class Set {
+@Table(name = "font_sets")
+public class FontSet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +26,7 @@ public class Set {
     private String setName;
 
 
-    public Set(String favoriteId, String setName) {
+    public FontSet(String favoriteId, String setName) {
         this.setName = setName;
         this.favoriteId = favoriteId;
         this.setName = setName;

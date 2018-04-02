@@ -1,5 +1,5 @@
-INSERT INTO "sets"
+INSERT INTO font_sets
     (favorite_id, set_name)
 VALUES
-    (1, "SET A"),
-    (2, "SET B");
+    (1, 'A'),
+    (2, 'B');

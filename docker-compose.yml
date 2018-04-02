@@ -49,6 +49,7 @@ services:
     depends_on:
       - eureka
       - postgresdev
+      - favorites-api
     command: './gradlew bootRun'
     environment:
       - GRADLE_USER_HOME=cache

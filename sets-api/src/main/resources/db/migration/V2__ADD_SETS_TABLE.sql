@@ -1,4 +1,4 @@
-CREATE TABLE "sets" (
+CREATE TABLE font_sets (
   PRIMARY KEY (id),
   id serial,
   favorite_id INTEGER NOT NULL,

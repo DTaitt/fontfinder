@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SetsApiApplicationTests {
+public class FontSetsApiApplicationTests {
 
 	@Test
 	public void contextLoads() {
