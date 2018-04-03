@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Card} from 'react-materialize';
+import {Card, Collection, CollectionItem} from 'react-materialize';
 
 import './FavCard.css';
 import FavItem from './FavItem';
@@ -8,7 +8,7 @@ export default class FavCard extends Component {
     render() {
         return(
             <div className='fav-card'>
-                    <ul className="favorites">
+                    <Collection>
                         {
                             this.props.favData.map((fav) => {
                                 return(
@@ -23,7 +23,7 @@ export default class FavCard extends Component {
                                 )
                             })
                         }
-                    </ul>
+                    </Collection>
             </div>
         )
     }

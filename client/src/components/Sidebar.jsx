@@ -10,7 +10,7 @@ export default class Sidebar extends Component{
         return(
             <aside className="sidebar">
                 <Collapsible>
-                    <CollapsibleItem header='Favorites' icon='filter_drama'>
+                    <CollapsibleItem header='Favorites' icon='favorite'>
                         <FavCard favData = {this.props.favData} deleteFavorite={this.props.deleteFavorite} />
                     </CollapsibleItem>
                     <CollapsibleItem header='Second' icon='filter_drama'>

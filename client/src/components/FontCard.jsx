@@ -21,7 +21,7 @@ export default class FontCard extends Component{
                     small 
                     className='red' 
                     waves='light' 
-                    icon='add' 
+                    icon='favorite' 
                     onClick={
                         () => {
                              this.props.addFavorite({

@@ -1,17 +1,23 @@
 import React from 'react';
 
+import {CollectionItem, Button} from 'react-materialize';
 import './FavItem.css';
 
 export default function FavItem(props){
     return(
-        <li
-            onClick={() => {props.deleteFavorite(props.id)}}
+        <CollectionItem
             className='fav-item'
         >
-            {/* <a href={props.url} target='_blank'> */}
-                <p className='family'>{props.family}</p>
-                <p className='category'>{props.category}</p>
-            {/* </a> */}
-        </li>
+            <p className='family'>{props.family}</p>
+            <p className='category'>{props.category}</p>
+            <Button 
+                    floating 
+                    small 
+                    className='red' 
+                    waves='light' 
+                    icon='remove_circle' 
+                    onClick={() => {props.deleteFavorite(props.id)}}
+                />
+        </CollectionItem>
     )
 }

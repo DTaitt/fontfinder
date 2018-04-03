@@ -3,8 +3,12 @@ header {
     margin-bottom: 2vh;
     display: flex;
     align-items: center;
+    position: fixed;
+    top: 0;
+    background: white;
+    width: 100%;
     div.my-container {
-        padding: 50px;
+        padding: 0 3vw;
         h1 {
             padding: 0 5px;
         }

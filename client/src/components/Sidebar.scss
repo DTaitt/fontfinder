@@ -1,8 +1,12 @@
 aside.sidebar {
-    width: 30%;
+    width: 23vw;
     background: chocolate;
-    margin: 0 5px;
+    // margin: 0 5px;
+    margin-top: 7vh;
     padding: 0 10px;
+    position: fixed;
+    right: 3vw;
+    height: 92vh;
     div.collapsible-body {
         padding: 0;
     }
