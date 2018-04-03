@@ -13,11 +13,12 @@ export default class Main extends Component {
         isFontsDataLoaded: false,
         favData:[],
         isfavDataLoaded:false,
-        test:0
+        searchQuery: '',
     }
 
     addFavorite = this.addFavorite.bind(this);
     deleteFavorite = this.deleteFavorite.bind(this);
+    handleSearch = this.handleSearch.bind(this)
 
     componentDidMount() {
         this.fetchFontsData('popularity');
@@ -76,6 +77,12 @@ export default class Main extends Component {
         }))
     }
 
+    handleSearch(searchQuery: string) {
+        this.setState({
+            searchQuery: searchQuery,
+        })
+    }
+
     render() {
         return(
             <main>
@@ -87,8 +94,8 @@ export default class Main extends Component {
                     &&
                     (
                         <div className="my-container">
-                            <CardDisplay fontsData = {this.state.fontsData} addFavorite={this.addFavorite} />
-                            <Sidebar favData = {this.state.favData} deleteFavorite={this.deleteFavorite} />
+                            <CardDisplay fontsData = {this.state.fontsData} addFavorite={this.addFavorite} searchQuery={this.state.searchQuery} />
+                            <Sidebar favData = {this.state.favData} deleteFavorite={this.deleteFavorite} handleSearch={this.handleSearch} />
                         </div>
                     )
                 }
