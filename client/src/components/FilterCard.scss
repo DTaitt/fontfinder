@@ -1,0 +1,21 @@
+div.filter-card {
+    background: white;
+    h2 {
+        margin: 0;
+        font-size: 18px;
+        padding-bottom: 12px;
+    }
+    div.row {
+        margin: 0;
+        padding-left: 5px;
+        div.input-field {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+    }
+    li.category div.row {
+        display: flex;
+        flex-direction: column;
+    }
+}

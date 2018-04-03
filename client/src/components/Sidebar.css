@@ -1,10 +1,11 @@
-aside.sidebar {
+.sidebar {
   width: 23vw;
-  background: chocolate;
   margin-top: 6vh;
   padding: 0 10px;
   position: fixed;
   right: 3vw;
   height: 92vh; }
-  aside.sidebar div.collapsible-body {
+  .sidebar div.card-content {
+    padding: 0; }
+  .sidebar div.collapsible-body {
     padding: 0; }
