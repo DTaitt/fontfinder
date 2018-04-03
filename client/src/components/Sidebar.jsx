@@ -18,7 +18,7 @@ export default class Sidebar extends Component{
                         defaultActiveKey={0}
                     >
                         <CollapsibleItem header='Filter' icon='search'>
-                            <FilterCard handleSearch={this.props.handleSearch} />
+                            <FilterCard handleSearch={this.props.handleSearch} handleCategory={this.props.handleCategory} />
                         </CollapsibleItem>
                         <CollapsibleItem header='Favorites' icon='favorite'>
                             <FavCard favData = {this.props.favData} deleteFavorite={this.props.deleteFavorite} />

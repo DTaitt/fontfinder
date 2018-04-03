@@ -1,2 +1,4 @@
 div.fav-card {
   background: burlywood; }
+  div.fav-card ul.collection {
+    overflow-y: auto; }

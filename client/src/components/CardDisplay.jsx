@@ -15,7 +15,19 @@ export default function DisplayPanel(props) {
             )
         }
 
+    console.log(fontsData)    
+    if (fontsData !== undefined) {
+            fontsData = fontsData.filter(
+                (font) => {
+                    // console.log(font.title.split())
+                    console.log(font)
+                    return font.category.indexOf(props.categoryValue) !== -1
+                }
+            )
+        }    
+    console.log(props);
     return(
+        
         <section className="card-display">
             {
                 fontsData.map((font) => {
