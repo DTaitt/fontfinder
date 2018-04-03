@@ -20,19 +20,19 @@ public class FontSet {
     private Long id;
 
     @Column(name = "favoriteId")
-    private String favoriteId;
+    private Long favoriteId;
 
     @Column(name = "set_name")
     private String setName;
 
 
-    public FontSet(String favoriteId, String setName) {
+    public FontSet(Long favoriteId, String setName) {
         this.setName = setName;
         this.favoriteId = favoriteId;
         this.setName = setName;
     }
 
-    public String getFavoriteId() {
+    public Long getFavoriteId() {
         return favoriteId;
     }
 
@@ -40,7 +40,7 @@ public class FontSet {
         return setName;
     }
 
-    public void setFavoriteId(String favoriteId) {
+    public void setFavoriteId(Long favoriteId) {
         this.favoriteId = favoriteId;
     }
 

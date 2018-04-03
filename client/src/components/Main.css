@@ -1,0 +1,7 @@
+main {
+  height: 92vh;
+  display: flex; }
+  main div.my-container {
+    width: 100%;
+    display: flex;
+    padding: 0 50px; }

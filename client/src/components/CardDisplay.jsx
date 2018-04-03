@@ -1,8 +1,9 @@
 import React from 'react';
+import './CardDisplay.css';
 
 import FontCard from './FontCard';
 
-export default function CardDisplay(props) {
+export default function DisplayPanel(props) {
     return(
         <section className="card-display">
             {

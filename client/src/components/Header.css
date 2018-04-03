@@ -1,0 +1,9 @@
+header {
+  height: 6vh;
+  margin-bottom: 2vh;
+  display: flex;
+  align-items: center; }
+  header div.my-container {
+    padding: 50px; }
+    header div.my-container h1 {
+      padding: 0 5px; }

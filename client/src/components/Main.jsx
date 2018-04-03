@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import axios from 'axios';
+
+import './Main.css';
 
 import CardDisplay from './CardDisplay';
 import Sidebar from './Sidebar';
@@ -84,7 +86,7 @@ export default class Main extends Component {
                     )  
                     &&
                     (
-                        <div className="container">
+                        <div className="my-container">
                             <CardDisplay fontsData = {this.state.fontsData} addFavorite={this.addFavorite} />
                             <Sidebar favData = {this.state.favData} deleteFavorite={this.deleteFavorite} />
                         </div>

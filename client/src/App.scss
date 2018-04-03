@@ -6,124 +6,132 @@
   font-weight: normal;
 }
 
-i {
-  display: block;
-}
+// i {
+//   display: block;
+// }
 
-.fav {
-  color: red;
-}
+// .fav {
+//   color: red;
+// }
 
 h1, h2, h3, h4, h5, h6 {
-  text-align: center;
+  font-size: 24px;
 }
 
 ul,li {
   list-style: none;
 }
 
-a {
-  text-decoration: none;
-  color: black;
+p {
+  font-size: 20px;
 }
 
-a:hover {
-  color: #0D47A1;
-}
+// a {
+//   text-decoration: none;
+//   color: black;
+// }
 
-div.container {
-  margin: 0 60px;
-}
+// a:hover {
+//   color: #0D47A1;
+// }
 
-// Header 
-header {
-  background: #2196F3;
-  padding: 30px 0;
-}
+// div.container {
+//   margin: 0 60px;
+// }
 
-// Main
-main {
-  padding: 50px 0;
-  display: flex;
-  div.container {
-    display: flex;
-  }
-}
+// // Header 
+// header {
+//   background: #2196F3;
+//   padding: 30px 0;
+// }
 
-// Card Display
-section.card-display {
-  background: #FFE0B2;
-  width: 70%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
+// // Main
+// main {
+//   padding: 50px 0;
+//   display: flex;
+//   div.container {
+//     display: flex;
+//   }
+// }
 
-// FontCard
-div.font-card {
-  margin: 10px;
-  padding: 0 5px;
-  // flex-grow: 1;
-  // // flex-basis: 300px;
-  // flex: 1;
-  flex-basis: 300px;
-  flex-grow: 1;
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  * {
-    text-transform: capitalize;
-  }
-  h1 {
-    text-align: center;
-    padding: 10px 0;
-    font-size: 28px;
-  }
-  p {
-    font-size: 22px;
-    font-style: italic;
-    text-align: center;
-  }
-  .fa-heart {
-    font-size: 30px;
-    margin: auto 0 15px 0;
-  }
-}
+// // Card Display
+// section.card-display {
+//   background: #FFE0B2;
+//   width: 70%;
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: space-between;
+// }
 
-// Sidebar 
-aside.sidebar {
-  width: 30%;
-  background: #FFE0B2;
-  padding: 10px;
-} 
+// // FontCard
+// div.font-card {
+//   margin: 10px;
+//   padding: 0 5px;
+//   // flex-grow: 1;
+//   // // flex-basis: 300px;
+//   // flex: 1;
+//   flex-basis: 300px;
+//   flex-grow: 1;
+//   height: 200px;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: flex-start;
+//   * {
+//     text-transform: capitalize;
+//   }
+//   h1 {
+//     text-align: center;
+//     padding: 10px 0;
+//     font-size: 28px;
+//   }
+//   p {
+//     font-size: 22px;
+//     font-style: italic;
+//     text-align: center;
+//   }
+//   .fa-heart {
+//     font-size: 30px;
+//     margin: auto 0 15px 0;
+//   }
+// }
 
-// FavCard
-div.favorite {
-  padding: 10px;
-  * {
-    text-transform: capitalize;
-  }
-  h2 {
-    padding: 5px;
-  }
-  li {
-    background: #80D8FF;
-    margin: 5px 0;
-    padding: 5px;
-  }
-  p {
-    padding: 5px 2px;
-  }
-  p.family {
-    font-size: 20px;
-    font-weight: bold;
-  }
-  p.category {
-    font-style: italic;
-  }
-  a {
-    width: 100%;
-  }
+// // Sidebar 
+// aside.sidebar {
+//   width: 30%;
+//   background: #FFE0B2;
+//   padding: 10px;
+// } 
+
+// // FavCard
+// div.favorite {
+//   padding: 10px;
+//   * {
+//     text-transform: capitalize;
+//   }
+//   h2 {
+//     padding: 5px;
+//   }
+//   li {
+//     background: #80D8FF;
+//     margin: 5px 0;
+//     padding: 5px;
+//   }
+//   p {
+//     padding: 5px 2px;
+//   }
+//   p.family {
+//     font-size: 20px;
+//     font-weight: bold;
+//   }
+//   p.category {
+//     font-style: italic;
+//   }
+//   a {
+//     width: 100%;
+//   }
+// }
+
+body {
+  padding: 0;
 }

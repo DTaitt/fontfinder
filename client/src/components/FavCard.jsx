@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import Card, {CardText} from 'material-ui/Card';
+import {Card} from 'react-materialize';
 
+import './FavCard.css';
 import FavItem from './FavItem';
 
 export default class FavCard extends Component {
     render() {
         return(
-            <Card className='favorite'>
-                <h2>Favorites</h2>
-                <div className="body">
+            <div className='fav-card'>
                     <ul className="favorites">
                         {
                             this.props.favData.map((fav) => {
@@ -25,8 +24,7 @@ export default class FavCard extends Component {
                             })
                         }
                     </ul>
-                </div>
-            </Card>
+            </div>
         )
     }
 }
