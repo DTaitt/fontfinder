@@ -18,7 +18,7 @@ export default class FontCard extends Component{
                 <p className="category">{this.props.category}</p>
                 <Button 
                     floating 
-                    small 
+                    // small 
                     className='red' 
                     waves='light' 
                     icon='favorite' 

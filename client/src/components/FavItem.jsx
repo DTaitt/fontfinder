@@ -12,7 +12,7 @@ export default function FavItem(props){
             <p className='category'>{props.category}</p>
             <Button 
                     floating 
-                    small 
+                    // small 
                     className='red' 
                     waves='light' 
                     icon='remove_circle' 
