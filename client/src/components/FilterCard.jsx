@@ -44,7 +44,7 @@ export default class FilterCard extends Component {
             })
             , () => {
                 this.props.handleVariants(this.state.variantValues)
-            }, () => {console.log(this.state.variantValues)})
+            })
         } else {
             // if it's already in the array, it removes it
             this.setState((prevState) => ({
@@ -53,7 +53,7 @@ export default class FilterCard extends Component {
                 })
             }),() => {
                 this.props.handleVariants(this.state.variantValues)
-            }, () => {console.log(this.state.variantValues)})
+            })
         }
     }
     

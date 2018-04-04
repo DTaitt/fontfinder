@@ -5,7 +5,7 @@ import FontCard from './FontCard';
 
 export default function DisplayPanel(props) {
     let fontsData = props.fontsData;
-    console.log(props.variantValues)
+    // console.log(props.variantValues)
 
     function filterOnSearchQuery() {
         if (props.searchQuery !== '' && fontsData !== undefined) {
@@ -57,18 +57,33 @@ export default function DisplayPanel(props) {
         // }
         console.log(variantValuesArr)
         let tempData = [];
+        console.log(props.variantValues.length)
+        console.log(fontsData)
         if (props.variantValues.length > 0 && fontsData !== undefined) {
             variantValuesArr.forEach((vVal) => {
-                tempData = fontsData.filter(
-                    (font) => {
-                        // console.log(font.title.split())
-                        // console.log(font)
-                        return font.variants.indexOf(vVal) !== -1
-                    }
-                )
-                console.log(tempData)
+                tempData = [
+                    ...tempData,
+                    ...fontsData.filter(
+                        (font) => {
+                            // console.log(font.title.split())
+                            // console.log(font)
+                            return font.variants.indexOf(vVal) !== -1
+                        }
+                    )
+                ]
+                // console.log(tempData)
             })
         }  
+
+        function onlyUnique(value, index, self) {
+          return self.indexOf(value) === index;
+        }
+        // usage example:
+    // var a = ['a', 1, 'a', 2, '1'];
+        let filteredTempData = tempData.filter( onlyUnique ); // returns ['a', 1, 2, '1']
+        console.log(filteredTempData)
+        fontsData = filteredTempData;
+        console.log(tempData)
         // console.log(fontsData)  
         //
     }
