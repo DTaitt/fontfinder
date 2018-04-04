@@ -15,12 +15,14 @@ export default class Main extends Component {
         isfavDataLoaded:false,
         searchQuery: '',
         categoryValue: '',
+        variantValues: [],
     }
 
     addFavorite = this.addFavorite.bind(this);
     deleteFavorite = this.deleteFavorite.bind(this);
     handleSearch = this.handleSearch.bind(this);
     handleCategory = this.handleCategory.bind(this);
+    handleVariants = this.handleVariants.bind(this);
 
     componentDidMount() {
         this.fetchFontsData('popularity');
@@ -91,6 +93,12 @@ export default class Main extends Component {
         })
     }
 
+    handleVariants(variantValues: string) {
+        this.setState({
+            variantValues: variantValues,
+        })
+    }
+
     render() {
         return(
             <main>
@@ -102,8 +110,8 @@ export default class Main extends Component {
                     &&
                     (
                         <div className="my-container">
-                            <CardDisplay fontsData = {this.state.fontsData} addFavorite={this.addFavorite} searchQuery={this.state.searchQuery} categoryValue={this.state.categoryValue} />
-                            <Sidebar favData = {this.state.favData} deleteFavorite={this.deleteFavorite} handleSearch={this.handleSearch} handleCategory={this.handleCategory} />
+                            <CardDisplay fontsData = {this.state.fontsData} addFavorite={this.addFavorite} searchQuery={this.state.searchQuery} categoryValue={this.state.categoryValue} variantValues={this.state.variantValues} />
+                            <Sidebar favData = {this.state.favData} deleteFavorite={this.deleteFavorite} handleSearch={this.handleSearch} handleCategory={this.handleCategory} handleVariants={this.handleVariants} />
                         </div>
                     )
                 }
