@@ -14,7 +14,7 @@ export default class Main extends Component {
         favData:[],
         isfavDataLoaded:false,
         searchQuery: '',
-        categoryValue: 'sans-serif',
+        categoryValue: '',
     }
 
     addFavorite = this.addFavorite.bind(this);

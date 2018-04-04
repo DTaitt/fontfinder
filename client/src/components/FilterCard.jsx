@@ -37,15 +37,14 @@ export default class FilterCard extends Component {
         return <div className="filter-card">
             <Collection>
               <CollectionItem className="search">
-                <h2>Search</h2>
                 <Row>
                   <Input s={6} label="Search" validate onChange={this.handleSearchInputChange} />
                 </Row>
               </CollectionItem>
-              <CollectionItem className="Categorys">
-                <h2>Categorys</h2>
+              <CollectionItem className="Categories">
                 <Row>
-                  <Input s={12} type="select" label="Category Type" defaultValue="0" onChange={this.handleCategoryInputChange} >
+                  <Input s={12} type="select" label="Category Type" defaultValue="0" onChange={this.handleCategoryInputChange}>
+                    <option value="">Choose a Category</option>
                     <option value="sans-serif">Sans-serif</option>
                     <option value="serif">Serif</option>
                     <option value="display">Display</option>
@@ -55,7 +54,6 @@ export default class FilterCard extends Component {
                 </Row>
               </CollectionItem>
               {/* <CollectionItem className='variant'>
-                    <h2>Variant</h2>
                     <Row>
                         <Input name='group1' type='checkbox' value='100' label='Thin' />
                         <Input name='group1' type='checkbox' value='100italic' label='Thin Italic'/>
@@ -65,7 +63,6 @@ export default class FilterCard extends Component {
                     </Row>
                 </CollectionItem>  */}
               <CollectionItem className="sort">
-                <h2>Sort</h2>
                 <Row>
                   <Input s={12} type="select" label="sort by" defaultValue="2">
                     <option value="alpha">Alpha</option>
