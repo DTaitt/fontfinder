@@ -14,3 +14,9 @@ div.filter-card {
   div.filter-card li.category div.row {
     display: flex;
     flex-direction: column; }
+  div.filter-card .select-wrapper input.select-dropdown,
+  div.filter-card .dropdown-content li {
+    text-transform: capitalize; }
+  div.filter-card .variant.collection-item div.row {
+    display: flex;
+    flex-direction: column; }

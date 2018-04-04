@@ -18,4 +18,12 @@ div.filter-card {
         display: flex;
         flex-direction: column;
     }
+    .select-wrapper input.select-dropdown,
+    .dropdown-content li {
+        text-transform: capitalize;
+    }
+    .variant.collection-item div.row {
+        display: flex;
+        flex-direction: column;
+    }
 }
