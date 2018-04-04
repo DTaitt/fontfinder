@@ -1,9 +1,16 @@
 main {
-    height: 92vh;
+    height: 94vh;
     display: flex;
+    margin-top: 8vh;
+    padding: 0;
     div.my-container {
         width: 100%;
         display: flex;
         padding: 0 3vw;
+        margin: 0;
+        div.progress {
+            margin-top: 2vh;
+            width: 70vw;
+        }
     }
 }

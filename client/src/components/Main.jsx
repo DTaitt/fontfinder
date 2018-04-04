@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
-
+import {ProgressBar} from 'react-materialize';
 import './Main.css';
 
 import CardDisplay from './CardDisplay';
@@ -52,13 +52,14 @@ export default class Main extends Component {
             console.log(error)
         }
              
-        let isInFav = null;
-
+        //sets isInFav to true if the favorite object is already in favorites
+        let isInFav = false;
         for(let i = 0; i < this.state.favData.length; i++){
             (newFav.id === this.state.favData[i].id) && (isInFav = true)
         }
 
-        (isInFav === null) 
+        //adds the favorite object if its not already added to favorites
+        (isInFav === false) 
         && 
         this.setState(prevState => ({
             favData: [...prevState.favData, newFav],
@@ -102,19 +103,30 @@ export default class Main extends Component {
     render() {
         return(
             <main>
-                {
-                    // displays the container div only if the fonts data and favorites data is loaded
-                    (
-                        this.state.isFontsDataLoaded  && this.state.isfavDataLoaded
-                    )  
-                    &&
-                    (
-                        <div className="my-container">
-                            <CardDisplay fontsData = {this.state.fontsData} addFavorite={this.addFavorite} searchQuery={this.state.searchQuery} categoryValue={this.state.categoryValue} variantValues={this.state.variantValues} />
-                            <Sidebar favData = {this.state.favData} deleteFavorite={this.deleteFavorite} handleSearch={this.handleSearch} handleCategory={this.handleCategory} handleVariants={this.handleVariants} />
-                        </div>
-                    )
-                }
+                <div className="my-container">
+                    {
+                        this.state.isFontsDataLoaded
+                        ? <CardDisplay 
+                            fontsData = {this.state.fontsData} 
+                            addFavorite={this.addFavorite} 
+                            searchQuery={this.state.searchQuery} 
+                            categoryValue={this.state.categoryValue} 
+                            variantValues={this.state.variantValues} 
+                        />
+                        : <ProgressBar/>
+                    }
+                    {   
+                        this.state.isfavDataLoaded
+                        &&
+                        <Sidebar 
+                            favData = {this.state.favData} 
+                            deleteFavorite={this.deleteFavorite} 
+                            handleSearch={this.handleSearch} 
+                            handleCategory={this.handleCategory} 
+                            handleVariants={this.handleVariants} 
+                        />
+                    }
+                </div>
             </main>
         )
     }

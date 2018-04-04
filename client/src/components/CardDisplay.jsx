@@ -5,63 +5,48 @@ import FontCard from './FontCard';
 
 export default function DisplayPanel(props) {
     let fontsData = props.fontsData;
-    // console.log(props.variantValues)
 
     function filterOnSearchQuery() {
-        if (props.searchQuery !== '' && fontsData !== undefined) {
-            fontsData = fontsData.filter(
-                (font) => {
-                    return font.family.toLowerCase().indexOf(props.searchQuery) !== -1
-                }
-            )
-        }
+        fontsData = fontsData.filter((font) => {
+            return font.family.toLowerCase().indexOf(props.searchQuery) !== -1
+        })
     }
 
     function filterOnCategoryValue() {
-        if (props.categoryValue !== '' && fontsData !== undefined) {
-            fontsData = fontsData.filter(
-                (font) => {
-                    return font.category.indexOf(props.categoryValue) !== -1
-                }
-            )
-        }    
+        fontsData = fontsData.filter((font) => {
+            return font.category.indexOf(props.categoryValue) !== -1
+        })    
     }
 
-    function filterOnVariantValues(variantValuesArr) {
-        let tempData = [];
-        // console.log(props.variantValues);
-        // console.log(fontsData)
-        if (props.variantValues.length > 0 && fontsData !== undefined) {
-            variantValuesArr.forEach((vVal) => {
-                tempData = [
-                    ...tempData,
-                    ...fontsData.filter(
-                        (font) => {
-                            return font.variants.indexOf(vVal) !== -1
-                        }
-                    )
-                ]
-            })
-        }  
-
-        function onlyUnique(value, index, self) {
+    function filterOnVariantValues() {
+        let unfilteredFontData = [];
+        
+        //finds fonts that have a certain variant e.g. 600italic and adds it to unfilteredFontData
+        function addToUnfilteredFontData(variant) {
+            unfilteredFontData = [
+                ...unfilteredFontData,
+                ...fontsData.filter((font) => {
+                    return font.variants.indexOf(variant) !== -1
+                })
+            ]
+        }
+        
+        //removes the duplicated values that might occur e.g a font having a 600italic variant AND a 700italic variant
+        function removeDuplicateFonts(value, index, self) {
             return self.indexOf(value) === index;
         }
+        
+        props.variantValues.forEach(addToUnfilteredFontData)
 
-        let filteredTempData = tempData.filter( onlyUnique ); 
-        fontsData = filteredTempData;
+        fontsData = unfilteredFontData.filter(removeDuplicateFonts); 
     }
 
-    // console.log(fontsData)
-    filterOnSearchQuery()
-    // console.log(fontsData);
-    filterOnCategoryValue()
-    // console.log(fontsData);
-    props.variantValues.length > 0 && filterOnVariantValues(props.variantValues)
+    // only runs these functions when a query is sent
+    props.searchQuery !== '' && filterOnSearchQuery()
+    props.categoryValue !== '' && filterOnCategoryValue();
+    props.variantValues.length > 0 && filterOnVariantValues()
 
-    console.log(fontsData)
     return(
-        
         <section className="card-display">
             {
                 fontsData.map((font) => {

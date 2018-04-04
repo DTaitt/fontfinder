@@ -2,5 +2,4 @@ section.card-display {
   width: 70vw;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: 6vh; }
+  justify-content: space-between; }

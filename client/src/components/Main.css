@@ -1,7 +1,13 @@
 main {
-  height: 92vh;
-  display: flex; }
+  height: 94vh;
+  display: flex;
+  margin-top: 8vh;
+  padding: 0; }
   main div.my-container {
     width: 100%;
     display: flex;
-    padding: 0 3vw; }
+    padding: 0 3vw;
+    margin: 0; }
+    main div.my-container div.progress {
+      margin-top: 2vh;
+      width: 70vw; }

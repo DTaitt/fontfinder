@@ -1,6 +1,7 @@
 header {
-  height: 6vh;
-  margin-bottom: 2vh;
+  height: 8vh;
+  margin-bottom: 0;
+  padding: 0;
   display: flex;
   align-items: center;
   position: fixed;

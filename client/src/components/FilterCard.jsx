@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Row, Input, Icon, Collection, CollectionItem} from 'react-materialize';
+import {Row, Input, Collection, CollectionItem} from 'react-materialize';
 
 import './FilterCard.css';
 
@@ -66,10 +66,19 @@ export default class FilterCard extends Component {
                   <Input s={6} label="Search" validate onChange={this.handleSearchInputChange} />
                 </Row>
               </CollectionItem>
+              <CollectionItem className="sort">
+                <Row>
+                  <Input s={12} type="select" label="sort by" defaultValue="2">
+                    <option value="alpha">Alpha</option>
+                    <option value="oopular">Popular</option>
+                    <option value="3">Option 3</option>
+                  </Input>
+                </Row>
+              </CollectionItem>
               <CollectionItem className="Categories">
                 <Row>
                   <Input s={12} type="select" label="Category Type" defaultValue="0" onChange={this.handleCategoryInputChange}>
-                    <option value="">Choose a Category</option>
+                    <option value="">View All</option>
                     <option value="sans-serif">Sans-serif</option>
                     <option value="serif">Serif</option>
                     <option value="display">Display</option>
@@ -96,19 +105,10 @@ export default class FilterCard extends Component {
                         <Input name='group1' type='checkbox' value='700italic' label='Bold 700 Italic'/>
                         <Input name='group1' type='checkbox' value='800' label='Extra-Bold 800'/>
                         <Input name='group1' type='checkbox' value='800italic' label='Extra-Bold 800 Italic'/>
-                        <Input name='group1' type='checkbox' value='800' label='Extra-Bold 900'/>
-                        <Input name='group1' type='checkbox' value='800italic' label='Extra-Bold 900 Italic'/>
+                        <Input name='group1' type='checkbox' value='900' label='Black 900'/>
+                        <Input name='group1' type='checkbox' value='900italic' label='Black 900 Italic'/>
                     </Row>
                 </CollectionItem> 
-              <CollectionItem className="sort">
-                <Row>
-                  <Input s={12} type="select" label="sort by" defaultValue="2">
-                    <option value="alpha">Alpha</option>
-                    <option value="oopular">Popular</option>
-                    <option value="3">Option 3</option>
-                  </Input>
-                </Row>
-              </CollectionItem>
             </Collection>
           </div>;
     }
