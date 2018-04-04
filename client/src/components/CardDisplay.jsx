@@ -27,69 +27,39 @@ export default function DisplayPanel(props) {
         }    
     }
 
-    filterOnSearchQuery()
-    filterOnCategoryValue()
-    filterOnVariantValues(props.variantValues)
-
-    // if (props.variantValues.length > 0 && fontsData !== undefined) {
-    //         fontsData = fontsData.filter(
-    //             (font) => {
-    //                 // console.log(font.title.split())
-    //                 // console.log(font)
-    //                 // return font.variants.indexOf(props.categoryValue) !== -1
-    //             }
-    //         )
-    //     }  
-
     function filterOnVariantValues(variantValuesArr) {
-        // console.log(fontsData)
-        // let tempFontData = [];
-        // if (props.variantValues.length > 0 && fontsData !== undefined) {
-        //     variantValuesArr.forEach(variantValue => {
-        //         tempFontData = [...tempFontData, fontsData.filter(
-        //             (font) => {
-        //                 // console.log(font.title.split())
-        //                 // console.log(font)
-        //                 return font.variants.indexOf(variantValue) !== -1
-        //             }
-        //         )] 
-        //     });
-        // }
-        console.log(variantValuesArr)
         let tempData = [];
-        console.log(props.variantValues.length)
-        console.log(fontsData)
+        // console.log(props.variantValues);
+        // console.log(fontsData)
         if (props.variantValues.length > 0 && fontsData !== undefined) {
             variantValuesArr.forEach((vVal) => {
                 tempData = [
                     ...tempData,
                     ...fontsData.filter(
                         (font) => {
-                            // console.log(font.title.split())
-                            // console.log(font)
                             return font.variants.indexOf(vVal) !== -1
                         }
                     )
                 ]
-                // console.log(tempData)
             })
         }  
 
         function onlyUnique(value, index, self) {
-          return self.indexOf(value) === index;
+            return self.indexOf(value) === index;
         }
-        // usage example:
-    // var a = ['a', 1, 'a', 2, '1'];
-        let filteredTempData = tempData.filter( onlyUnique ); // returns ['a', 1, 2, '1']
-        console.log(filteredTempData)
+
+        let filteredTempData = tempData.filter( onlyUnique ); 
         fontsData = filteredTempData;
-        console.log(tempData)
-        // console.log(fontsData)  
-        //
     }
 
-    
+    // console.log(fontsData)
+    filterOnSearchQuery()
+    // console.log(fontsData);
+    filterOnCategoryValue()
+    // console.log(fontsData);
+    props.variantValues.length > 0 && filterOnVariantValues(props.variantValues)
 
+    console.log(fontsData)
     return(
         
         <section className="card-display">
