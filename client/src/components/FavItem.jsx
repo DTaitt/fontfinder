@@ -1,10 +1,19 @@
+// @flow
 import React from 'react';
 import './FavItem.css';
 
 import {CollectionItem, Button, Modal} from 'react-materialize';
 
-export default function FavItem(props){
-    let formattedFontFamily;
+type Props = {
+  id: string,
+  family: string,
+  category: string,
+  url: string,
+  deleteFavorite(id: string): void,
+};
+
+export default function FavItem(props:Props){
+    let formattedFontFamily:string = '';
 
     function formatFontFamily() {
         let splitFontFamily = props.family.split(' ');

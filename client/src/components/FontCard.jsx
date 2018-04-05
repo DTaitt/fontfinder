@@ -1,10 +1,26 @@
+// @flow
 import React from 'react';
 import './FontCard.css';
 
 import {CardPanel, Button, Modal} from 'react-materialize';
 
-export default function FontCard (props){
-    let formattedFontFamily;
+type Props = {
+    id: string,
+    family: string,
+    category: string,
+    url: string,
+    addFavorite(newFav:newFav):Promise<void>,
+}
+
+type newFav = {
+    id: string,
+    family: string,
+    category: string,
+    url: string,
+}
+
+export default function FontCard (props:Props){
+    let formattedFontFamily:string = '';
 
     function formatFontFamily() {
         let splitFontFamily = props.family.split(' ');

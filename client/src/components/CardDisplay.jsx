@@ -1,9 +1,18 @@
+// @flow
 import React from 'react';
 import './CardDisplay.css';
 
 import FontCard from './FontCard';
 
-export default function DisplayPanel(props) {
+type Props = {
+    fontsData: Object[],
+    addFavorite():Promise<void>,
+    searchQuery: string, 
+    categoryValue: string,
+    variantValues: string[],
+}
+
+export default function DisplayPanel(props:Props) {
     let fontsData = props.fontsData;
 
     function filterOnSearchQuery() {
@@ -22,7 +31,7 @@ export default function DisplayPanel(props) {
         let unfilteredFontData = [];
         
         //finds fonts that have a certain variant e.g. 600italic and adds it to unfilteredFontData
-        function addToUnfilteredFontData(variant) {
+        function addToUnfilteredFontData(variant:string) {
             unfilteredFontData = [
                 ...unfilteredFontData,
                 ...fontsData.filter((font) => {

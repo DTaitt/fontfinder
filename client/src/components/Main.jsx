@@ -6,9 +6,20 @@ import './Main.css';
 import CardDisplay from './CardDisplay';
 import Sidebar from './Sidebar';
 
-export default class Main extends Component {
+type Props = {}
+type State = {
+    fontsData: Object[],
+    isFontsDataLoaded: boolean,
+    favData: Object[],
+    isfavDataLoaded: boolean,
+    searchQuery: string,
+    categoryValue: string,
+    variantValues: String[],
+}
 
-    state = {
+export default class Main extends Component<Props, State> {
+
+    state:State = {
         fontsData:[],
         isFontsDataLoaded: false,
         favData:[],
@@ -29,7 +40,7 @@ export default class Main extends Component {
         this.fetchToFavoritesAPI();
     }
 
-    async fetchFontsData(sortType) {
+    async fetchFontsData(sortType:string) {
         let res = await axios.get(`https://www.googleapis.com/webfonts/v1/webfonts?sort=${sortType}&key= AIzaSyAOVSz0lHeFAs7ll5LO6HTADinYVxy1vt4`)
         this.setState({
             fontsData: res.data.items.slice(99),
@@ -45,7 +56,7 @@ export default class Main extends Component {
         })
     }
 
-    async addFavorite(newFav) {
+    async addFavorite(newFav:Object) {
         try {
             await axios.post(`/favorites`, newFav);
         } catch (error) {   
@@ -67,7 +78,7 @@ export default class Main extends Component {
         
     }
 
-    async deleteFavorite(id) {
+    async deleteFavorite(id:string) {
         try {
             await axios.delete(`/favorites/${id}`)
         } catch (error) {
@@ -82,19 +93,19 @@ export default class Main extends Component {
         }))
     }
 
-    handleSearch(searchQuery: string) {
+    handleSearch(searchQuery:string) {
         this.setState({
             searchQuery: searchQuery,
         })
     }
 
-    handleCategory(categoryValue: string) {
+    handleCategory(categoryValue:string) {
         this.setState({
             categoryValue: categoryValue,
         })
     }
 
-    handleVariants(variantValues: string) {
+    handleVariants(variantValues:string) {
         this.setState({
             variantValues: variantValues,
         })

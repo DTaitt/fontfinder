@@ -1,19 +1,31 @@
+// @flow
 import React, { Component } from 'react';
 import './FilterCard.css';
 
 import {Row, Input, Collection, CollectionItem} from 'react-materialize';
 
+type Props = {
+  handleSearch(searchQuery: string): void,
+  handleCategory(categoryValue: string): void,
+  handleVariants(variantValues: string[]): void,
+};
 
-export default class FilterCard extends Component {
+type State = {
+    value: string,
+    categoryValue: string,
+    variantValues: string[],
+}
 
-    state: State = {
+export default class FilterCard extends Component<Props, State> {
+
+    state:State = {
         value: '',
         categoryValue: 'sans-serif',
         variantValues: [],
     }
 
-    categoryOptions = ['view all','sans-serif', 'serif', 'display', 'handwriting', 'monospace']
-    variantOptions = [
+    categoryOptions:string[] = ['view all','sans-serif', 'serif', 'display', 'handwriting', 'monospace']
+    variantOptions:Object[] = [
         {value:'100', label:'Thin'},
         {value:'100italic', label:'Thin Italic'},
         {value:'200', label:'Extra-Light'},
@@ -38,7 +50,7 @@ export default class FilterCard extends Component {
     handleCategoryInputChange = this.handleCategoryInputChange.bind(this);
     handleVariantInputChange = this.handleVariantInputChange.bind(this);
 
-    handleSearchInputChange(e: any) {
+    handleSearchInputChange(e:any) {
         this.setState({
             value: e.target.value,
         },() => {
@@ -46,7 +58,7 @@ export default class FilterCard extends Component {
         })
     }
 
-    handleCategoryInputChange(e: any) {
+    handleCategoryInputChange(e:any) {
         this.setState({
             categoryValue: e.target.value,
         }, () => {
@@ -54,7 +66,7 @@ export default class FilterCard extends Component {
         })
     }
 
-    handleVariantInputChange(e: any) {
+    handleVariantInputChange(e:any) {
         e.persist()
 
         // if an element variant value isn't in the arry it adds it
