@@ -4,3 +4,6 @@ div.font-card {
   margin: 0 5px 5px;
   height: 30vh;
   padding: 10px; }
+  div.font-card p {
+    text-transform: uppercase;
+    font-size: 16px; }

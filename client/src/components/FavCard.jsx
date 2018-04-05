@@ -5,6 +5,7 @@ import './FavCard.css';
 import FavItem from './FavItem';
 
 export default function FavCard(props) {
+
     return(
         <div className='fav-card'>
             <Collection>
