@@ -34,7 +34,7 @@ export default function FontCard (props:Props){
         <CardPanel 
             className="font-card teal lighten-4 black-text z-depth-2"
         >
-            <a href={props.url} target='_'>
+            <a href={props.url} target='_blank'>
                 <h1 className="family">{props.family}</h1>
             </a>
             <p className="category">{props.category}</p>

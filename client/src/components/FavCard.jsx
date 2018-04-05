@@ -7,12 +7,7 @@ import FavItem from './FavItem';
 
 type Props = {
     favData:Object[],
-    key: string,
-    id: string,
-    family: string,
-    category: string,
-    url: string,
-    deleteFavorite(id:string):void,
+    deleteFavorite(id:string):Promise<void>,
 }
 
 type Fav = {

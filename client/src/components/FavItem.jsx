@@ -9,7 +9,7 @@ type Props = {
   family: string,
   category: string,
   url: string,
-  deleteFavorite(id: string): void,
+  deleteFavorite(id: string): Promise<void>,
 };
 
 export default function FavItem(props:Props){

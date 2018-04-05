@@ -1,4 +1,4 @@
-// @props
+// @flow
 import React from 'react';
 import { Collapsible, CollapsibleItem, Card, Badge } from 'react-materialize';
 import './Sidebar.css';
@@ -14,7 +14,7 @@ type Props = {
     handleVariants(variantValues:string[]):void, 
 }
 
-export default function Sidebar(props){
+export default function Sidebar(props:Props){
     return(
         <Card className='sidebar teal'>
             <Collapsible accordion>
