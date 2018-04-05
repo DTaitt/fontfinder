@@ -8,7 +8,7 @@ import FilterCard from './FilterCard';
 
 type Props = {
     favData:Object[],
-    deleteFavorite(id:string):Promise<void> 
+    deleteFavorite(id:string):Promise<void>, 
     handleSearch(searchQuery:string):void,
     handleCategory(categoryValue:string):void, 
     handleVariants(variantValues:string[]):void, 
