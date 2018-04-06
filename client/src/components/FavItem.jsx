@@ -40,11 +40,21 @@ export default function FavItem(props:Props){
                 />
                 <Modal
                     header={props.family}
-                    trigger={<Button>Add Style</Button>}>
-                    <h2>Embed Font</h2>
-                    <p>{`<link href="https://fonts.googleapis.com/css?family=${formattedFontFamily}" rel="stylesheet">`}</p>
-                    <h2>Add to CSS</h2>
-                    <p>{`font-family: '${props.family}', ${props.category};`}</p>
+                    trigger={<Button>Add Style</Button>}
+                    className='import-code'
+                >
+                    <div className="html">
+                        <h2>Add to HTML</h2>
+                        <blockquote><pre><code>
+                            {`<link href="https://fonts.googleapis.com/css?family=${formattedFontFamily}" rel="stylesheet">`}
+                        </code></pre></blockquote>
+                    </div>
+                    <div className="css">
+                        <h2>Add to CSS</h2>
+                        <blockquote><pre><code>
+                           {`font-family: '${props.family}', ${props.category};`}
+                        </code></pre></blockquote>
+                    </div>  
                 </Modal>
             </div>
         </CollectionItem>

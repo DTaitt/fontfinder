@@ -158,7 +158,9 @@ export default function FontCard (props:Props){
                 />
                 <Modal
                     header={props.family}
-                    trigger={<Button>Add Style</Button>}>
+                    trigger={<Button>Add Style</Button>}
+                    className='import-code'
+                >
                     <div className="html">
                         <h2>Add to HTML</h2>
                         <blockquote><pre><code>

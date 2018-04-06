@@ -19,3 +19,8 @@ p {
 
 a {
   color: #005cb2; }
+
+.modal pre {
+  display: inline;
+  padding: 4px 9px;
+  background: lightgrey; }
