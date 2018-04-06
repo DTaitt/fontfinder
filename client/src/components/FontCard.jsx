@@ -17,6 +17,7 @@ type Props = {
     family: string,
     category: string,
     url: string,
+    variants: string[],
     addFavorite(newFav:newFav):Promise<void>,
 }
 
