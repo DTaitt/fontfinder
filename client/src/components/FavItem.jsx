@@ -40,7 +40,7 @@ export default function FavItem(props:Props){
                 />
                 <Modal
                     header={props.family}
-                    trigger={<Button>Expand</Button>}>
+                    trigger={<Button>Add Style</Button>}>
                     <h2>Embed Font</h2>
                     <p>{`<link href="https://fonts.googleapis.com/css?family=${formattedFontFamily}" rel="stylesheet">`}</p>
                     <h2>Add to CSS</h2>
