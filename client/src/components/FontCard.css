@@ -9,6 +9,8 @@ div.font-card {
   justify-content: space-between; }
   div.font-card ul.collection {
     margin: 0; }
+    div.font-card ul.collection li.variant {
+      text-transform: capitalize; }
   div.font-card h1 {
     margin: 0 0 10px;
     font-size: 20px; }

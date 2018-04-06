@@ -22,7 +22,7 @@ type Props = {
 
 export default function FontCard (props:Props){
     let formattedFontFamily:string = '';
-    let variants = variants;
+    let variants = props.variants;
 
     function formatFontFamily() {
         let splitFontFamily = props.family.split(' ');
@@ -31,67 +31,89 @@ export default function FontCard (props:Props){
     }
     
     function formatVariantValues() {
+        let tempVariants = []
         variants.forEach(variant => {
             switch (variant) {
                 case '100':
                     variant = 'Thin'
+                    tempVariants.push('Thin');
                     break;
                 case '100italic':
                     variant = 'Thin Italic'
+                    tempVariants.push("Thin Italic");
                     break;
                 case '200':
                     variant = 'Extra-Light'
+                    tempVariants.push("Extra-Light");
                     break;
                 case '200italic':
-                    variant = 'Extra-Light Italic '
+                    variant = 'Extra-Light Italic'
+                    tempVariants.push("Extra-Light Italic");
                     break;
                 case '300':
                     variant = 'Light'
+                    tempVariants.push("Light");
                     break;
                 case '300italic':
                     variant = 'Light Italic'
+                    tempVariants.push("Light Italic");
                     break;
                 case '400':
                     variant = 'Regular'
+                    tempVariants.push("Regular");
                     break;
                 case '400italic':
                     variant = 'Italic'
+                    tempVariants.push("Italic");
                     break;
                 case '500':
                     variant = 'Medium'
+                    tempVariants.push("Medium");
                     break;
                 case '500italic':
                     variant = 'Medium Italic'
+                    tempVariants.push("Medium Italic");
                     break;
                 case '600':
                     variant = 'Semi-Bold'
+                    tempVariants.push("Semi-Bold");
                     break;
                 case '600italic':
                     variant = 'Semi-Bold Italic'
+                    tempVariants.push("Semi-Bold Italic");
                     break;
                 case '700':
                     variant = 'Bold'
+                    tempVariants.push("Bold");
                     break;
                 case '700italic':
                     variant = 'Bold Italic'
+                    tempVariants.push("Bold Italic");
                     break;
                 case '800':
                     variant = 'Extra-Bold'
+                    tempVariants.push("Extra-Bold");
                     break;
                 case '800italic':
                     variant = 'Extra-Bold Italic'
+                    tempVariants.push("Extra-Bold Italic");
                     break;   
                 case '900':
                     variant = 'Black'
+                    tempVariants.push("Black");
                     break;
                 case '900italic':
                     variant = 'Black Italic'
+                    tempVariants.push("Black Italic");
                     break;   
                 default:
                     variant = variant
+                    tempVariants.push(variant);
                     break;
             }
         });
+
+        variants = tempVariants;
     }
 
     formatFontFamily()
