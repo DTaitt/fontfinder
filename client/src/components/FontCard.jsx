@@ -2,8 +2,7 @@
 import React from 'react';
 import './FontCard.css';
 
-import {CardPanel, Button, Modal, Chip, Dropdown, NavItem, CollectionItem} from 'react-materialize';
-import Collection from 'react-materialize/lib/Collection';
+import {CardPanel, Button, Modal, Dropdown, Collection, CollectionItem} from 'react-materialize';
 
 type newFav = {
     id: string,

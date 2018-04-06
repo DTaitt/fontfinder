@@ -23,9 +23,13 @@ export default function DisplayPanel(props:Props) {
     }
 
     function filterOnCategoryValue() {
-        fontsData = fontsData.filter((font) => {
-            return font.category.indexOf(props.categoryValue) !== -1
-        })    
+        if(props.categoryValue === 'view all') {
+            return fontsData
+        } else {
+            fontsData = fontsData.filter((font) => {
+                return font.category.indexOf(props.categoryValue) !== -1
+            })    
+        }
     }
 
     function filterOnVariantValues() {
