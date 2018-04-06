@@ -33,7 +33,7 @@ export default class FilterCard extends Component<Props, State> {
         {value:'300', label:'Light'},
         {value:'300italic', label:'Light Italic'},
         {value:'regular', label:'Regular'},
-        {value:'italic', label:'Regular Italic'},
+        {value:'italic', label:'Italic'},
         {value:'500', label:'Medium'},
         {value:'500italic', label:'Medium Italic'},
         {value:'600', label:'Semi-Bold'},

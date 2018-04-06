@@ -7,6 +7,9 @@ div.font-card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    ul.collection {
+        margin: 0;
+    }
     h1 {
         margin: 0 0 10px;
         font-size: 20px;
@@ -18,6 +21,9 @@ div.font-card {
     p.category {
         text-transform: uppercase;
         font-size: 14px;
+    }
+    div.variant {
+        font-size: 12px;
     }
     div.interaction {
         display: flex;

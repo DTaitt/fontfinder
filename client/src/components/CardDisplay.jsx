@@ -55,7 +55,6 @@ export default function DisplayPanel(props:Props) {
     props.searchQuery !== '' && filterOnSearchQuery()
     props.categoryValue !== '' && filterOnCategoryValue();
     props.variantValues.length > 0 && filterOnVariantValues()
-    console.log(props.fontsData)
     return(
         <section className="card-display">
             {

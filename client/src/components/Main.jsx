@@ -111,6 +111,7 @@ export default class Main extends Component<Props, State> {
         })
     }
 
+    
     render() {
         return(
             <main>
