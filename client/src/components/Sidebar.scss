@@ -12,4 +12,10 @@ div.sidebar {
     div.collapsible-body {
         padding: 0;
     }
+    ul.collapsible li.favorite div.collapsible-header i {
+        color: #f44336;
+    }
+    span.badge {
+        font-weight: bold;
+    }
 }

@@ -10,3 +10,7 @@ div.sidebar {
     padding: 0; }
   div.sidebar div.collapsible-body {
     padding: 0; }
+  div.sidebar ul.collapsible li.favorite div.collapsible-header i {
+    color: #f44336; }
+  div.sidebar span.badge {
+    font-weight: bold; }

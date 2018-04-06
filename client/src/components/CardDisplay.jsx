@@ -10,6 +10,7 @@ type Props = {
     searchQuery: string, 
     categoryValue: string,
     variantValues: string[],
+    variants: string[]
 }
 
 export default function DisplayPanel(props:Props) {
@@ -54,7 +55,7 @@ export default function DisplayPanel(props:Props) {
     props.searchQuery !== '' && filterOnSearchQuery()
     props.categoryValue !== '' && filterOnCategoryValue();
     props.variantValues.length > 0 && filterOnVariantValues()
-
+    console.log(props.fontsData)
     return(
         <section className="card-display">
             {
@@ -67,6 +68,7 @@ export default function DisplayPanel(props:Props) {
                             category = {font.category}
                             url = {`https://fonts.google.com/specimen/${font.family}`}
                             addFavorite={props.addFavorite}
+                            variants = {font.variants}
                         />
                     )
                 })

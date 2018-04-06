@@ -16,7 +16,7 @@ type Props = {
 
 export default function Sidebar(props:Props){
     return(
-        <Card className='sidebar teal'>
+        <Card className='sidebar cyan darken-2'>
             <Collapsible accordion>
                 <CollapsibleItem header='Filter' icon='search'>
                     <FilterCard 
@@ -26,7 +26,7 @@ export default function Sidebar(props:Props){
                         />
                 </CollapsibleItem>
                 <Badge>{props.favData.length}</Badge>
-                <CollapsibleItem header='Favorites' icon='favorite'>
+                <CollapsibleItem header='Favorites' icon='favorite' className='favorite'>
                     <FavCard 
                         favData = {props.favData} 
                         deleteFavorite={props.deleteFavorite} 

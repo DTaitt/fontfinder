@@ -2,11 +2,13 @@
 import React from 'react';
 import './Header.css';
 
+import {Navbar} from 'react-materialize';
+
 export default function Header() {
     return(
         <header>
             <div className="my-container">
-                <h1>FontFinder</h1>
+                <Navbar brand='Font Finder' />
             </div>
         </header>
     )

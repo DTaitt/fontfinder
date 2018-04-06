@@ -1,8 +1,9 @@
 main {
-  height: 94vh;
   display: flex;
-  margin-top: 8vh;
-  padding: 0; }
+  margin-top: 7vh;
+  padding: 0;
+  background: #4dd0e1;
+  padding-top: 1vh; }
   main div.my-container {
     width: 100%;
     display: flex;
