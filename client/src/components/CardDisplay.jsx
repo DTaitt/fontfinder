@@ -45,6 +45,7 @@ export default function DisplayPanel(props:Props) {
             ]
         }
         
+        //https://stackoverflow.com/questions/9229645/remove-duplicate-values-from-js-array
         //removes the duplicated values that might occur e.g a font having a 600italic variant AND a 700italic variant
         function removeDuplicateFonts(value, index, self) {
             return self.indexOf(value) === index;
@@ -71,6 +72,7 @@ export default function DisplayPanel(props:Props) {
                             category = {font.category}
                             url = {`https://fonts.google.com/specimen/${font.family}`}
                             addFavorite={props.addFavorite}
+                            deleteFavorite={props.deleteFavorite}
                             variants = {font.variants}
                         />
                     )

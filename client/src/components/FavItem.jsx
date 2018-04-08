@@ -35,7 +35,7 @@ export default function FavItem(props:Props){
                     // small 
                     className='red' 
                     waves='light' 
-                    icon='remove_circle' 
+                    icon='remove' 
                     onClick={() => {props.deleteFavorite(props.id)}}
                 />
                 <Modal

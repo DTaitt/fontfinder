@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import React, {Component} from 'react';
 import './FontCard.css';
 
 import {CardPanel, Button, Modal, Dropdown, Collection, CollectionItem} from 'react-materialize';
@@ -20,19 +20,25 @@ type Props = {
     addFavorite(newFav:newFav):Promise<void>,
 }
 
-export default function FontCard (props:Props){
-    let formattedFontFamily:string = '';
-    let variants = props.variants;
+export default class FontCard extends Component<Props, State>{
 
-    function formatFontFamily() {
-        let splitFontFamily = props.family.split(' ');
+    state = {
+        formattedFontFamily: '',
+        variants: this.props.variants,
+        isInFav: false,
+    }
+
+    formatFontFamily() {
+        let splitFontFamily = this.props.family.split(' ');
         let joinedFontFamily = splitFontFamily.join('+');
-        formattedFontFamily = joinedFontFamily;
+        this.setState({
+            formattedFontFamily: joinedFontFamily
+        })
     }
     
-    function formatVariantValues() {
+    formatVariantValues() {
         let tempVariants = []
-        variants.forEach(variant => {
+        this.state.variants.forEach(variant => {
             switch (variant) {
                 case '100':
                     variant = 'Thin'
@@ -113,68 +119,92 @@ export default function FontCard (props:Props){
             }
         });
 
-        variants = tempVariants;
+        this.setState({
+            variants: tempVariants
+        })
     }
 
-    formatFontFamily()
-    formatVariantValues()
+    componentDidMount() {
+        this.formatFontFamily();
+        this.formatVariantValues();
+    }
+    
+    changeFavStatus() {
+        this.setState(prevState => ({
+            isInFav: !prevState.isInFav,
+        }), 
+        () => {
+            this.addOrRemoveFav()
+        })
+    }
 
-    return(
-        <CardPanel 
-            className="font-card white black-text z-depth-2"
-        >
-            <div className="info">
-                <a href={props.url} target='_blank'>
-                    <h1 className="family">{props.family}</h1>
-                </a>
-                <p className="category">{props.category}</p>
-                <Dropdown trigger={
-                    <Button>{variants.length} Variant{variants.length > 1 && 's'}</Button>
-                }>
-                <Collection>
-                    {
-                        variants.map((variant) => {
-                            return <CollectionItem className='variant' key={variant}>{variant}</CollectionItem>
-                        })
-                    }
-                </Collection>
-                </Dropdown>
-            </div>
-            <div className="interaction">
-                <Button 
-                    floating 
-                    // small 
-                    className='red' 
-                    waves='light' 
-                    icon='favorite' 
-                    onClick={() => {
-                                props.addFavorite({
-                                id: props.id,
-                                family: props.family,
-                                category: props.category,
-                                url: props.url
+    addOrRemoveFav() {
+        this.state.isInFav
+        ? this.props.addFavorite({
+            id: this.props.id,
+            family: this.props.family,
+            category: this.props.category,
+            url: this.props.url
+        })
+        : this.props.deleteFavorite(this.props.id)
+    }
+
+    render() {
+        return(
+            <CardPanel 
+                className="font-card white black-text z-depth-2"
+            >
+                <div className="info">
+                    <a href={this.props.url} target='_blank'>
+                        <h1 className="family">{this.props.family}</h1>
+                    </a>
+                    <p className="category">{this.props.category}</p>
+                    <Dropdown trigger={
+                        <Button>{this.state.variants.length} Variant{this.state.variants.length > 1 && 's'}</Button>
+                    }>
+                    <Collection>
+                        {
+                            this.state.variants.map((variant) => {
+                                return <CollectionItem className='variant' key={variant}>{variant}</CollectionItem>
                             })
-                        }}
-                />
-                <Modal
-                    header={props.family}
-                    trigger={<Button>Add Style</Button>}
-                    className='import-code'
-                >
-                    <div className="html">
-                        <h2>Add to HTML</h2>
-                        <blockquote><pre><code>
-                            {`<link href="https://fonts.googleapis.com/css?family=${formattedFontFamily}" rel="stylesheet">`}
-                        </code></pre></blockquote>
-                    </div>
-                    <div className="css">
-                        <h2>Add to CSS</h2>
-                        <blockquote><pre><code>
-                           {`font-family: '${props.family}', ${props.category};`}
-                        </code></pre></blockquote>
-                    </div>                    
-                </Modal>
-            </div>
-        </CardPanel>
-    )
+                        }
+                    </Collection>
+                    </Dropdown>
+                </div>
+                <div className="interaction">
+                    <Button 
+                        floating 
+                        // small 
+                        className='red' 
+                        waves='light' 
+                        icon={
+                            this.state.isInFav ? 'remove' : 'favorite'
+                        } 
+                        onClick={() => {
+                                    this.changeFavStatus()
+                                    
+                            }}
+                    />
+                    <Modal
+                        header={this.props.family}
+                        trigger={<Button>Add Style</Button>}
+                        className='import-code'
+                    >
+                        <div className="html">
+                            <h2>Add to HTML</h2>
+                            <blockquote><pre><code>
+                                {`<link href="https://fonts.googleapis.com/css?family=${this.state.formattedFontFamily}" rel="stylesheet">`}
+                            </code></pre></blockquote>
+                        </div>
+                        <div className="css">
+                            <h2>Add to CSS</h2>
+                            <blockquote><pre><code>
+                               {`font-family: '${this.props.family}', ${this.props.category};`}
+                            </code></pre></blockquote>
+                        </div>                    
+                    </Modal>
+                </div>
+            </CardPanel>
+        )
+    }
 }

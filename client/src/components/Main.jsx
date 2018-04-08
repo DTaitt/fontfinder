@@ -121,6 +121,7 @@ export default class Main extends Component<Props, State> {
                         ? <CardDisplay 
                             fontsData = {this.state.fontsData} 
                             addFavorite={this.addFavorite} 
+                            deleteFavorite={this.deleteFavorite}
                             searchQuery={this.state.searchQuery} 
                             categoryValue={this.state.categoryValue} 
                             variantValues={this.state.variantValues} 
