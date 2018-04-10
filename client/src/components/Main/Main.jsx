@@ -1,6 +1,4 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import {ProgressBar} from 'react-materialize';
+import React from 'react';
 import './Main.css';
 
 import CardDisplayContainer from './../CardDisplayContainer';

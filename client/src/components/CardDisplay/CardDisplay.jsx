@@ -2,7 +2,7 @@
 import React from 'react';
 import './CardDisplay.css';
 
-import FontCard from './../FontCard/FontCard';
+import FontCardContainer from './../FontCardContainer';
 
 type Props = {
     fontsData: Object[],
@@ -19,7 +19,7 @@ export default function DisplayPanel(props:Props) {
             {
                 props.fontsData.map((font) => {
                     return (
-                        <FontCard 
+                        <FontCardContainer 
                             key = {font.family}
                             id = {font.family}
                             family = {font.family}
