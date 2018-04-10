@@ -3,7 +3,7 @@ import axios from 'axios';
 import {ProgressBar} from 'react-materialize';
 import './Main.css';
 
-import CardDisplay from './../CardDisplay/CardDisplay';
+import CardDisplayContainer from './../CardDisplayContainer';
 import Sidebar from './../Sidebar/Sidebar';
 
 type Props = {
@@ -20,7 +20,7 @@ export default function Main (props:Props) {
     return(
         <main>
             <div className="my-container">
-                <CardDisplay 
+                <CardDisplayContainer 
                     fontsData = {props.fontsData} 
                     addFavorite={props.addFavorite} 
                     deleteFavorite={props.deleteFavorite}
