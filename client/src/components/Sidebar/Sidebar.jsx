@@ -4,7 +4,7 @@ import { Collapsible, CollapsibleItem, Card, Badge } from 'react-materialize';
 import './Sidebar.css';
 
 import FavCard from './../FavCard/FavCard';
-import FilterCard from './../FilterCard/FilterCard';
+import FilterCardContainer from './../FilterCardContainer';
 
 type Props = {
     favData:Object[],
@@ -19,7 +19,7 @@ export default function Sidebar(props:Props){
         <Card className='sidebar cyan darken-2'>
             <Collapsible accordion>
                 <CollapsibleItem header='Filter' icon='search'>
-                    <FilterCard 
+                    <FilterCardContainer 
                         handleSearch={props.handleSearch} 
                         handleCategory={props.handleCategory} 
                         handleVariants = {props.handleVariants} 

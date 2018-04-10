@@ -59,10 +59,11 @@ export default function CardDisplayContainer(props: Props) {
   props.searchQuery !== "" && filterOnSearchQuery();
   props.categoryValue !== "" && filterOnCategoryValue();
   props.variantValues.length > 0 && filterOnVariantValues();
+
   return (
       <Fragment>
         <CardDisplay 
-            fontsData = {props.fontsData} 
+            fontsData = {fontsData} 
             addFavorite={props.addFavorite} 
             deleteFavorite={props.deleteFavorite}
             searchQuery={props.searchQuery} 
