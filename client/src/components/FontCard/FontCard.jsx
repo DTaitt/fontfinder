@@ -52,9 +52,8 @@ export default function FontCard(props:Props){
                         props.isInFav ? 'remove' : 'favorite'
                     } 
                     onClick={() => {
-                                props.changeFavStatus()
-                                
-                        }}
+                        props.changeFavStatus()
+                    }}
                 />
                 <Modal
                     header={props.family}

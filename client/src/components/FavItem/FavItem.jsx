@@ -13,16 +13,6 @@ type Props = {
 };
 
 export default function FavItem(props:Props){
-    let formattedFontFamily:string = '';
-
-    function formatFontFamily() {
-        let splitFontFamily = props.family.split(' ');
-        let joinedFontFamily = splitFontFamily.join('+');
-        formattedFontFamily = joinedFontFamily;
-    }
-
-    formatFontFamily()
-
     return(
         <CollectionItem className='fav-item'>
             <div className="info">
@@ -46,7 +36,7 @@ export default function FavItem(props:Props){
                     <div className="html">
                         <h2>Add to HTML</h2>
                         <blockquote><pre><code>
-                            {`<link href="https://fonts.googleapis.com/css?family=${formattedFontFamily}" rel="stylesheet">`}
+                            {`<link href="https://fonts.googleapis.com/css?family=${props.formattedFontFamily}" rel="stylesheet">`}
                         </code></pre></blockquote>
                     </div>
                     <div className="css">

@@ -26,6 +26,10 @@ export default class FontCardContainer extends Component<Props, State> {
     isInFav: false
   };
 
+  formatFontFamily = this.formatFontFamily.bind(this);
+  formatVariantValues = this.formatVariantValues.bind(this);
+  changeFavStatus = this.changeFavStatus.bind(this);
+
   formatFontFamily() {
     let splitFontFamily = this.props.family.split(" ");
     let joinedFontFamily = splitFontFamily.join("+");
@@ -160,6 +164,8 @@ export default class FontCardContainer extends Component<Props, State> {
                 deleteFavorite={this.props.deleteFavorite}
                 variants = {this.props.variants}
                 changeFavStatus = {this.changeFavStatus}
+                addOrRemoveFav={this.addOrRemoveFav}
+                formattedFontFamily={this.state.formattedFontFamily}
             />
         </Fragment>
     );

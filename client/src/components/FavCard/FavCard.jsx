@@ -3,7 +3,7 @@ import React from 'react';
 import { Collection} from 'react-materialize';
 
 import './FavCard.css';
-import FavItem from './../FavItem/FavItem';
+import FavItemContainer from './../FavItemContainer';
 
 type Props = {
     favData:Object[],
@@ -19,14 +19,13 @@ type Fav = {
 };
 
 export default function FavCard(props:Props) {
-
     return(
         <div className='fav-card'>
             <Collection>
                 {
                     props.favData.map((fav:Fav) => {
                         return(
-                            <FavItem 
+                            <FavItemContainer 
                                 key = {fav.id}
                                 id = {fav.id}
                                 family = {fav.family}
