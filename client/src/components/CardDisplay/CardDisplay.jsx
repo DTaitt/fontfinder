@@ -2,7 +2,7 @@
 import React from 'react';
 import './CardDisplay.css';
 
-import FontCard from './FontCard';
+import FontCard from './../FontCard/FontCard';
 
 type Props = {
     fontsData: Object[],

@@ -3,8 +3,8 @@ import axios from 'axios';
 import {ProgressBar} from 'react-materialize';
 import './Main.css';
 
-import CardDisplay from './CardDisplay';
-import Sidebar from './Sidebar';
+import CardDisplay from './../CardDisplay/CardDisplay';
+import Sidebar from './../Sidebar/Sidebar';
 
 type Props = {}
 type State = {

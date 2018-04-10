@@ -3,8 +3,8 @@ import React from 'react';
 import { Collapsible, CollapsibleItem, Card, Badge } from 'react-materialize';
 import './Sidebar.css';
 
-import FavCard from './FavCard';
-import FilterCard from './FilterCard';
+import FavCard from './../FavCard/FavCard';
+import FilterCard from './../FilterCard/FilterCard';
 
 type Props = {
     favData:Object[],

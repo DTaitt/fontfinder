@@ -3,7 +3,7 @@ import React from 'react';
 import { Collection} from 'react-materialize';
 
 import './FavCard.css';
-import FavItem from './FavItem';
+import FavItem from './../FavItem/FavItem';
 
 type Props = {
     favData:Object[],
