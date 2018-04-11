@@ -5,12 +5,16 @@ import './CardDisplay.css';
 import FontCardContainer from './../FontCardContainer';
 
 type Props = {
-    fontsData: Object[],
-    addFavorite():Promise<void>,
-    searchQuery: string, 
-    categoryValue: string,
-    variantValues: string[],
-    variants: string[]
+  fontsData: Object[],
+  addFavorite(newFav: Object): Promise<void>,
+  deleteFavorite(id: string): Promise<void>,
+  searchQuery: string,
+  categoryValue: string,
+  variantValues: string[]
+};
+
+type State = {
+    currentFontsData: Object[],
 }
 
 export default class DisplayPanel extends Component<Props, State> {
@@ -19,7 +23,7 @@ export default class DisplayPanel extends Component<Props, State> {
         currentFontsData: this.props.fontsData,
     }
 
-    componentWillReceiveProps(nextProps){
+    componentWillReceiveProps(nextProps:Object){
         nextProps.fontsData !== this.props.fontsData 
         && 
         this.setState({

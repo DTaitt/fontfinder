@@ -5,11 +5,11 @@ import CardDisplay from './CardDisplay/CardDisplay';
 
 type Props = {
   fontsData: Object[],
-  addFavorite(): Promise<void>,
+  addFavorite(newFav: Object): Promise<void>,
+  deleteFavorite(id: string): Promise<void>,
   searchQuery: string,
   categoryValue: string,
   variantValues: string[],
-  variants: string[]
 };
 
 export default function CardDisplayContainer(props: Props) {

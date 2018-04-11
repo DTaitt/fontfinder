@@ -18,6 +18,9 @@ type Props = {
     url: string,
     variants: string[],
     addFavorite(newFav:newFav):Promise<void>,
+    isInFav: boolean,
+    changeFavStatus():void,
+    formattedFontFamily: string,
 }
 
 export default function FontCard(props:Props){

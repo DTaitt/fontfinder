@@ -10,6 +10,7 @@ type Props = {
   category: string,
   url: string,
   deleteFavorite(id: string): Promise<void>,
+  formattedFontFamily: string,
 };
 
 export default function FavItem(props:Props){

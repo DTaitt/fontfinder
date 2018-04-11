@@ -16,7 +16,14 @@ type Props = {
   category: string,
   url: string,
   variants: string[],
-  addFavorite(newFav: newFav): Promise<void>
+  addFavorite(newFav: Object): Promise<void>,
+  deleteFavorite(id: string): Promise<void>,
+};
+
+type State = {
+  formattedFontFamily: string,
+  variants: string[],
+  isInFav: boolean,
 };
 
 export default class FontCardContainer extends Component<Props, State> {
@@ -166,6 +173,7 @@ export default class FontCardContainer extends Component<Props, State> {
                 changeFavStatus = {this.changeFavStatus}
                 addOrRemoveFav={this.addOrRemoveFav}
                 formattedFontFamily={this.state.formattedFontFamily}
+                isInFav={this.state.isInFav}
             />
         </Fragment>
     );

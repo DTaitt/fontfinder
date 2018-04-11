@@ -1,3 +1,4 @@
+// @flow
 import React, { Component, Fragment } from "react";
 import axios from "axios";
 import { ProgressBar } from "react-materialize";
@@ -12,7 +13,7 @@ type State = {
   isfavDataLoaded: boolean,
   searchQuery: string,
   categoryValue: string,
-  variantValues: String[]
+  variantValues: string[]
 };
 
 export default class MainContainer extends Component<Props, State> {
@@ -102,7 +103,7 @@ export default class MainContainer extends Component<Props, State> {
     });
   }
 
-  handleVariants(variantValues: string) {
+  handleVariants(variantValues: string[]) {
     this.setState({
       variantValues: variantValues
     });

@@ -12,6 +12,11 @@ type Props = {
     searchQuery: string,
     categoryValue: string,
     variantValues: String[],
+    addFavorite(newFav:Object):Promise<void>,
+    deleteFavorite(id:string):Promise<void>,
+    handleSearch(searchQuery:string):void,
+    handleCategory(categoryValue:string):void,
+    handleVariants(variantValues:string[]):void,
 }
 
 export default function Main (props:Props) {

@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from 'react';
+import React from 'react';
 import './FilterCard.css';
 
 import {Row, Input, Collection, CollectionItem} from 'react-materialize';
@@ -8,6 +8,11 @@ type Props = {
   handleSearch(searchQuery: string): void,
   handleCategory(categoryValue: string): void,
   handleVariants(variantValues: string[]): void,
+  handleSearchInputChange(e:any):void,
+  handleCategoryInputChange(e:any):void,
+  handleVariantInputChange(e:any):void,
+  categoryOptions: string[],
+  variantOptions: Object[],
 };
 
 export default function FilterCard(props:Props) {
