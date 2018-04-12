@@ -20,6 +20,7 @@ export default function FavItemContainer(props: Props) {
     }
 
     formatFontFamily();
+    console.log(props)
     return (
         <Fragment>
             <FavItem 

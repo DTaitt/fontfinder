@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import './CardDisplay.css';
 
 import FontCardContainer from './../FontCardContainer';
+import store from './../../redux/store';
 
 type Props = {
   fontsData: Object[],
@@ -17,25 +18,26 @@ type State = {
     currentFontsData: Object[],
 }
 
-export default class DisplayPanel extends Component<Props, State> {
+export default class CardDisplay extends Component<Props, State> {
 
-    state = {
-        currentFontsData: this.props.fontsData,
-    }
+    // state = {
+    //     currentFontsData: this.props.fontsData,
+    // }
 
-    componentWillReceiveProps(nextProps:Object){
-        nextProps.fontsData !== this.props.fontsData 
-        && 
-        this.setState({
-            currentFontsData: nextProps.fontsData,
-        })
-    }
+    // componentWillReceiveProps(nextProps:Object){
+    //     nextProps.fontsData !== this.props.fontsData 
+    //     && 
+    //     this.setState({
+    //         currentFontsData: nextProps.fontsData,
+    //     })
+    // }
 
     render() {
         return(
             <section className="card-display">
                 {
-                    this.state.currentFontsData.map((font) => {
+                    store.getState().fontData.map((font) => {
+                    // this.state.currentFontsData.map((font) => {
                         return (
                             <FontCardContainer 
                                 key = {font.family}

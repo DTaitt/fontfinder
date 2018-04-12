@@ -1,14 +1,10 @@
 // @flow
 import React, { Component, Fragment } from "react";
+import store from './../redux/store';
+import { toggleFavStatus } from './../redux/reducers';
+import { UPDATE_FAV_STATUS } from './../redux/actions';
 
 import FontCard from './FontCard/FontCard';
-
-type newFav = {
-  id: string,
-  family: string,
-  category: string,
-  url: string
-};
 
 type Props = {
   id: string,
@@ -138,26 +134,58 @@ export default class FontCardContainer extends Component<Props, State> {
   }
 
   changeFavStatus() {
-    this.setState(
-      prevState => ({
-        isInFav: !prevState.isInFav
-      }),
-      () => {
-        this.addOrRemoveFav();
-      }
-    );
+    // this.setState(
+    //   prevState => ({
+    //     isInFav: !prevState.isInFav
+    //   }),
+    //   () => {
+    //     this.addOrRemoveFav();
+    //   }
+    // );
+    // store.dispatch({ type: "ADD_TO_FAVS" });
+    // // this.addOrRemoveFav();
+    // this.props.addFavorite({
+    //   id: this.props.id,
+    //   family: this.props.family,
+    //   category: this.props.category,
+    //   url: this.props.url
+    // });
+    this.newFavStatusFunc()
   }
 
-  addOrRemoveFav() {
-    this.state.isInFav
-      ? this.props.addFavorite({
+  newFavStatusFunc() {
+    switch (store.getState().isInFav) {
+      case true:
+        store.dispatch({type: 'REMOVE_FROM_FAVS'})
+        console.log(store.getState())
+        // store.dispatch({type: 'ADD_FAV'})
+        // this.props.deleteFavorite(this.props.id)
+      break;
+      case false:
+        store.dispatch({ type: "ADD_TO_FAVS" })
+        console.log(store.getState());
+        store.dispatch({
+          type: 'ADD_FAV',
           id: this.props.id,
           family: this.props.family,
           category: this.props.category,
           url: this.props.url
         })
-      : this.props.deleteFavorite(this.props.id);
+      default:
+        break;
+    }
   }
+
+  // addOrRemoveFav() {
+  //   store.getState()
+  //     ? this.props.addFavorite({
+  //         id: this.props.id,
+  //         family: this.props.family,
+  //         category: this.props.category,
+  //         url: this.props.url
+  //       })
+  //     : this.props.deleteFavorite(this.props.id);
+  // }
 
   render() {
     return (

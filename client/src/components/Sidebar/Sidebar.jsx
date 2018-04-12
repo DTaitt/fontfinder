@@ -5,6 +5,7 @@ import './Sidebar.css';
 
 import FavCard from './../FavCard/FavCard';
 import FilterCardContainer from './../FilterCardContainer';
+import store from './../../redux/store';
 
 type Props = {
     favData:Object[],
@@ -15,6 +16,7 @@ type Props = {
 }
 
 export default function Sidebar(props:Props){
+    console.log(store.getState().favorites);
     return(
         <Card className='sidebar cyan darken-2'>
             <Collapsible accordion>
@@ -25,10 +27,10 @@ export default function Sidebar(props:Props){
                         handleVariants = {props.handleVariants} 
                         />
                 </CollapsibleItem>
-                <Badge>{props.favData.length}</Badge>
+                <Badge>{store.getState().favData.length}</Badge>
                 <CollapsibleItem header='Favorites' icon='favorite' className='favorite'>
                     <FavCard 
-                        favData = {props.favData} 
+                        favData = {store.getState().favorites} 
                         deleteFavorite={props.deleteFavorite} 
                     />
                 </CollapsibleItem>
