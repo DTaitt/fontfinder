@@ -16,22 +16,21 @@ type Props = {
 }
 
 export default function Sidebar(props:Props){
-    console.log(store.getState().favorites);
     return(
         <Card className='sidebar cyan darken-2'>
             <Collapsible accordion>
                 <CollapsibleItem header='Filter' icon='search'>
                     <FilterCardContainer 
-                        handleSearch={props.handleSearch} 
-                        handleCategory={props.handleCategory} 
-                        handleVariants = {props.handleVariants} 
+                        // handleSearch={props.handleSearch} 
+                        // handleCategory={props.handleCategory} 
+                        // handleVariants = {props.handleVariants} 
                         />
                 </CollapsibleItem>
                 <Badge>{store.getState().favData.length}</Badge>
                 <CollapsibleItem header='Favorites' icon='favorite' className='favorite'>
                     <FavCard 
                         favData = {store.getState().favorites} 
-                        deleteFavorite={props.deleteFavorite} 
+                        // deleteFavorite={props.deleteFavorite} 
                     />
                 </CollapsibleItem>
             </Collapsible>

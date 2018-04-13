@@ -8,7 +8,7 @@ import store from './../redux/store';
 
 type Props = {};
 type State = {
-  fontsData: Object[],
+  fontData: Object[],
   isFontsDataLoaded: boolean,
   favData: Object[],
   isfavDataLoaded: boolean,
@@ -19,7 +19,7 @@ type State = {
 
 export default class MainContainer extends Component<Props, State> {
   state: State = {
-    fontsData: [],
+    fontData: [],
     isFontsDataLoaded: false,
     favData: [],
     isfavDataLoaded: false,
@@ -28,11 +28,11 @@ export default class MainContainer extends Component<Props, State> {
     variantValues: []
   };
 
-  addFavorite = this.addFavorite.bind(this);
-  deleteFavorite = this.deleteFavorite.bind(this);
-  handleSearch = this.handleSearch.bind(this);
-  handleCategory = this.handleCategory.bind(this);
-  handleVariants = this.handleVariants.bind(this);
+  // addFavorite = this.addFavorite.bind(this);
+  // deleteFavorite = this.deleteFavorite.bind(this);
+  // handleSearch = this.handleSearch.bind(this);
+  // handleCategory = this.handleCategory.bind(this);
+  // handleVariants = this.handleVariants.bind(this);
 
   componentDidMount() {
     this.fetchFontsData("popularity");
@@ -40,37 +40,25 @@ export default class MainContainer extends Component<Props, State> {
   }
 
   async fetchFontsData(sortType: string) {
-    let res = await axios.get(
+    const res = await axios.get(
       `https://www.googleapis.com/webfonts/v1/webfonts?sort=${sortType}&key= AIzaSyAOVSz0lHeFAs7ll5LO6HTADinYVxy1vt4`
     );
-    // console.log(res.data)
-    let updatedRes = res.data.items.map((font:Object) => {
+    const updatedRes = res.data.items.map((font:Object) => {
       return {...font, isInFav: false }
     })
-    // console.log(updatedRes)
-    // this.setState({
-    //   fontsData: updatedRes.slice(99),
-    //   isFontsDataLoaded: true
-    // });
     store.dispatch({
-      type: 'INITIALIZE_FONT_DATA',
-      data: updatedRes,
+      type: 'ADD_FONT_DATA',
+      data: updatedRes.slice(0,36),
     })
-    console.log(store.getState())
     store.dispatch({
       type: 'UPDATE_FONT_DATA_LOADED_STATUS',
     })
-    console.log(store.getState())
   }
 
   async fetchToFavoritesAPI() {
-    let res = await axios.get(`/favorites`);
-    // this.setState({
-    //   favData: res.data,
-    //   isfavDataLoaded: true
-    // });
+    const res = await axios.get(`/favorites`);
     store.dispatch({
-      type: 'INITIALIZE_FAV_DATA',
+      type: 'ADD_FAV_DATA',
       data: res.data,
     })
     store.dispatch({
@@ -78,25 +66,31 @@ export default class MainContainer extends Component<Props, State> {
     })
   }
 
-  async addFavorite(newFav: Object) {
-    try {
-      await axios.post(`/favorites`, newFav);
-    } catch (error) {
-      console.log(error);
-    }
+  // async addFavorite(newFav: Object) {
+  //   //console.log('test')
+  //   try {
+  //     await axios.post(`/favorites`, newFav);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
 
-    //sets isInFav to true if the favorite object is already in favorites
-    let isInFav = false;
-    for (let i = 0; i < this.state.favData.length; i++) {
-      newFav.id === this.state.favData[i].id && (isInFav = true);
-    }
+  //   //sets isInFav to true if the favorite object is already in favorites
+  //   let isInFav = false;
+  //   for (let i = 0; i < store.getState().favData; i++) {
+  //     newFav.id === store.getState().favData[i].id && (isInFav = true);
+  //   }
 
-    //adds the favorite object if its not already added to favorites
-    isInFav === false &&
-      this.setState(prevState => ({
-        favData: [...prevState.favData, newFav]
-      }));
-  }
+  //   //adds the favorite object if its not already added to favorites
+  //   isInFav === false &&
+  //     // this.setState(prevState => ({
+  //     //   favData: [...prevState.favData, newFav]
+  //     // }));
+  //     store.dispatch({
+  //     type: 'ADD_FAV_DATA',
+  //     data: newFav,
+  //   })
+  //   //console.log(store.getState())
+  // }
 
   async deleteFavorite(id: string) {
     try {
@@ -132,23 +126,21 @@ export default class MainContainer extends Component<Props, State> {
   }
 
   render() {
-    console.log(store.getState().isFontDataLoaded)
-    console.log(store.getState().isFavDataLoaded)
     return (
         <Fragment>
             {
-                store.getState().isFontDataLoaded && store.getState().isFavDataLoaded
+                store.getState().isFontDataLoaded// && store.getState().isFavDataLoaded
                 ? <Main 
-                    fontsData={store.getState().fontsData}
-                    addFavorite={this.addFavorite}
-                    deleteFavorite={this.deleteFavorite}
-                    searchQuery={this.state.searchQuery}
-                    categoryValue={this.state.categoryValue}
-                    variantValues={this.state.variantValues}
-                    favData={store.getState().favData}
-                    handleSearch={this.handleSearch}
-                    handleCategory={this.handleCategory}
-                    handleVariants={this.handleVariants}
+                    fontData={store.getState().fontData}
+                    // addFavorite={this.addFavorite}
+                    // deleteFavorite={this.deleteFavorite}
+                    // searchQuery={this.state.searchQuery}
+                    // categoryValue={this.state.categoryValue}
+                    // variantValues={this.state.variantValues}
+                    // favData={store.getState().favData}
+                    // handleSearch={this.handleSearch}
+                    // handleCategory={this.handleCategory}
+                    // handleVariants={this.handleVariants}
                 />
                 : <p>Loading...</p>
             }

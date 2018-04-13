@@ -4,7 +4,7 @@ import FontFinderApp from './reducers';
 
 
 const store = createStore(FontFinderApp);
-console.log(store.getState())
+//console.log(store.getState())
 // store.dispatch({ type: "UPDATE_FAV_STATUS" });
 // console.log(store.getState());
 // store.dispatch({ type: "UPDATE_FAV_STATUS" });

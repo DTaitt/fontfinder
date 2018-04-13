@@ -2,9 +2,10 @@
 import React, {Fragment} from "react";
 
 import CardDisplay from './CardDisplay/CardDisplay';
+import store from './../redux/store';
 
 type Props = {
-  fontsData: Object[],
+  fontData: Object[],
   addFavorite(newFav: Object): Promise<void>,
   deleteFavorite(id: string): Promise<void>,
   searchQuery: string,
@@ -13,19 +14,19 @@ type Props = {
 };
 
 export default function CardDisplayContainer(props: Props) {
-  let fontsData = props.fontsData;
+  let fontData = store.getState().fontData;
 
   function filterOnSearchQuery() {
-    fontsData = fontsData.filter(font => {
+    fontData = fontData.filter(font => {
       return font.family.toLowerCase().indexOf(props.searchQuery) !== -1;
     });
   }
 
   function filterOnCategoryValue() {
     if (props.categoryValue === "view all") {
-      return fontsData;
+      return fontData;
     } else {
-      fontsData = fontsData.filter(font => {
+      fontData = fontData.filter(font => {
         return font.category.indexOf(props.categoryValue) !== -1;
       });
     }
@@ -38,7 +39,7 @@ export default function CardDisplayContainer(props: Props) {
     function addToUnfilteredFontData(variant: string) {
       unfilteredFontData = [
         ...unfilteredFontData,
-        ...fontsData.filter(font => {
+        ...fontData.filter(font => {
           return font.variants.indexOf(variant) !== -1;
         })
       ];
@@ -52,23 +53,23 @@ export default function CardDisplayContainer(props: Props) {
 
     props.variantValues.forEach(addToUnfilteredFontData);
 
-    fontsData = unfilteredFontData.filter(removeDuplicateFonts);
+    fontData = unfilteredFontData.filter(removeDuplicateFonts);
   }
 
   // only runs these functions when a query is sent
-  props.searchQuery !== "" && filterOnSearchQuery();
-  props.categoryValue !== "" && filterOnCategoryValue();
-  props.variantValues.length > 0 && filterOnVariantValues();
+  // props.searchQuery !== "" && filterOnSearchQuery();
+  // props.categoryValue !== "" && filterOnCategoryValue();
+  // props.variantValues.length > 0 && filterOnVariantValues();
 
   return (
       <Fragment>
         <CardDisplay 
-            fontsData = {fontsData} 
-            addFavorite={props.addFavorite} 
-            deleteFavorite={props.deleteFavorite}
-            searchQuery={props.searchQuery} 
-            categoryValue={props.categoryValue} 
-            variantValues={props.variantValues} 
+            fontData = {fontData} 
+            // addFavorite={props.addFavorite} 
+            // deleteFavorite={props.deleteFavorite}
+            // searchQuery={props.searchQuery} 
+            // categoryValue={props.categoryValue} 
+            // variantValues={props.variantValues} 
         />
       </Fragment>
   );

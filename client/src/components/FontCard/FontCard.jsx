@@ -2,6 +2,9 @@
 import React from 'react';
 import './FontCard.css';
 
+import axios from 'axios';
+import store from './../../redux/store'
+
 import {CardPanel, Button, Modal, Dropdown, Collection, CollectionItem} from 'react-materialize';
 
 type newFav = {
@@ -24,6 +27,37 @@ type Props = {
 }
 
 export default function FontCard(props:Props){
+
+    const newFav = {
+        id: props.id,
+        family: props.family,
+        category: props.category,
+        url: props.url,
+    }
+
+    async function addFavorite(fav) {
+        //console.log('test')
+        try {
+            await axios.post(`/favorites`, fav);
+        } catch (error) {
+            console.log(error);
+        }
+
+        //sets isInFav to true if the favorite object is already in favorites
+        let isInFav = false;
+        for (let i = 0; i < store.getState().favData; i++) {
+            fav.id === store.getState().favData[i].id && (isInFav = true);
+        }
+
+        //adds the favorite object if its not already added to favorites
+        isInFav === false &&
+        store.dispatch({
+            type: 'ADD_FAV_DATA',
+            data: {x:'test',y:34},
+        })
+        console.log(store.getState().favData)
+    }
+
     return(
         <CardPanel 
             className="font-card white black-text z-depth-2"
@@ -55,7 +89,8 @@ export default function FontCard(props:Props){
                         props.isInFav ? 'remove' : 'favorite'
                     } 
                     onClick={() => {
-                        props.changeFavStatus()
+                        // props.changeFavStatus()
+                        addFavorite(newFav)
                     }}
                 />
                 <Modal

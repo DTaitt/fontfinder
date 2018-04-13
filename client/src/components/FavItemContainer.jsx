@@ -28,8 +28,8 @@ export default function FavItemContainer(props: Props) {
                 family = {props.family}
                 category = {props.category}
                 url = {`https://fonts.google.com/specimen/${formattedFontFamily}`}
-                deleteFavorite={props.deleteFavorite}
-                formattedFontFamily={formattedFontFamily}
+                // deleteFavorite={props.deleteFavorite}
+                // formattedFontFamily={formattedFontFamily}
             />
         </Fragment>
     );

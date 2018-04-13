@@ -20,7 +20,6 @@ type Fav = {
 };
 
 export default function FavCard(props:Props) {
-    console.log(props.favData)
     return(
         <div className='fav-card'>
             <Collection>
@@ -34,8 +33,8 @@ export default function FavCard(props:Props) {
                                 family = {fav.family}
                                 category = {fav.category}
                                 url = {`https://fonts.google.com/specimen/${fav.family}`}
-                                deleteFavorite={props.deleteFavorite}
-                                isInFav = {false}
+                                // deleteFavorite={props.deleteFavorite}
+                                // isInFav = {false}
                             />
                         )
                     })

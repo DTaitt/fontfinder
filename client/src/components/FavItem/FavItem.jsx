@@ -1,8 +1,9 @@
 // @flow
 import React from 'react';
 import './FavItem.css';
-
+import axios from 'axios';
 import {CollectionItem, Button, Modal} from 'react-materialize';
+import store from './../../redux/store';
 
 type Props = {
   id: string,
@@ -14,6 +15,26 @@ type Props = {
 };
 
 export default function FavItem(props:Props){
+
+    async function deleteFavorite(id: string) {
+        try {
+        await axios.delete(`/favorites/${id}`);
+        } catch (error) {
+        console.log(`Error deleting Idea with ID of ${id}`);
+        console.log(error);
+        }
+
+        // this.setState(prevState => ({
+        //     favData: prevState.favData.filter(fav => {
+        //         return fav.id !== id;
+        //     })
+        // }));
+        store.dispatch({
+            type: 'REMOVE_FAV_DATA',
+            favId: id,
+        })
+    }
+
     return(
         <CollectionItem className='fav-item'>
             <div className="info">
@@ -27,7 +48,7 @@ export default function FavItem(props:Props){
                     className='red' 
                     waves='light' 
                     icon='remove' 
-                    onClick={() => {props.deleteFavorite(props.id)}}
+                    onClick={() => {deleteFavorite(props.id)}}
                 />
                 <Modal
                     header={props.family}

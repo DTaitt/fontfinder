@@ -11,7 +11,7 @@ export default FontFinderApp;
 
 export function fontData(fontData = [], action) {
     switch(action.type) {
-        case 'INITIALIZE_FONT_DATA':
+        case 'ADD_FONT_DATA':
             return [
                 ...fontData,
                 ...action.data
@@ -32,11 +32,22 @@ export function isFontDataLoaded(isFontDataLoaded = false, action) {
 
 export function favData(favData = [], action) {
     switch (action.type) {
-        case 'INITIALIZE_FAV_DATA':
+        case 'ADD_FAV_DATA':
             return [
                 ...favData,
                 ...action.data
             ]
+        case 'REMOVE_FAV_DATA':
+            // return [
+            //     ...favData,
+            //     ...action.data
+            // ]
+            // prevState.favData.filter(fav => {
+            //   return fav.id !== id;
+            // });
+            return favData.filter((fav) => {
+                return fav.id !== action.favId;
+            })
         default:
             return favData;
     }

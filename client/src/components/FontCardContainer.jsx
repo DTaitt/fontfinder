@@ -1,5 +1,6 @@
 // @flow
 import React, { Component, Fragment } from "react";
+import axios from 'axios'
 import store from './../redux/store';
 import { toggleFavStatus } from './../redux/reducers';
 import { UPDATE_FAV_STATUS } from './../redux/actions';
@@ -150,31 +151,31 @@ export default class FontCardContainer extends Component<Props, State> {
     //   category: this.props.category,
     //   url: this.props.url
     // });
-    this.newFavStatusFunc()
+    // this.newFavStatusFunc()
   }
 
-  newFavStatusFunc() {
-    switch (store.getState().isInFav) {
-      case true:
-        store.dispatch({type: 'REMOVE_FROM_FAVS'})
-        console.log(store.getState())
-        // store.dispatch({type: 'ADD_FAV'})
-        // this.props.deleteFavorite(this.props.id)
-      break;
-      case false:
-        store.dispatch({ type: "ADD_TO_FAVS" })
-        console.log(store.getState());
-        store.dispatch({
-          type: 'ADD_FAV',
-          id: this.props.id,
-          family: this.props.family,
-          category: this.props.category,
-          url: this.props.url
-        })
-      default:
-        break;
-    }
-  }
+  // newFavStatusFunc() {
+  //   switch (store.getState().isInFav) {
+  //     case true:
+  //       store.dispatch({type: 'REMOVE_FROM_FAVS'})
+  //       console.log(store.getState())
+  //       // store.dispatch({type: 'ADD_FAV'})
+  //       // this.props.deleteFavorite(this.props.id)
+  //     break;
+  //     case false:
+  //       store.dispatch({ type: "ADD_TO_FAVS" })
+  //       console.log(store.getState());
+  //       store.dispatch({
+  //         type: 'ADD_FAV',
+  //         id: this.props.id,
+  //         family: this.props.family,
+  //         category: this.props.category,
+  //         url: this.props.url
+  //       })
+  //     default:
+  //       break;
+  //   }
+  // }
 
   // addOrRemoveFav() {
   //   store.getState()
@@ -185,6 +186,32 @@ export default class FontCardContainer extends Component<Props, State> {
   //         url: this.props.url
   //       })
   //     : this.props.deleteFavorite(this.props.id);
+  // }
+
+  // async addFavorite(newFav: Object) {
+  //   console.log('test')
+  //   try {
+  //     await axios.post(`/favorites`, newFav);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+
+  //   //sets isInFav to true if the favorite object is already in favorites
+  //   let isInFav = false;
+  //   for (let i = 0; i < this.state.favData.length; i++) {
+  //     newFav.id === this.state.favData[i].id && (isInFav = true);
+  //   }
+
+  //   //adds the favorite object if its not already added to favorites
+  //   isInFav === false &&
+  //     // this.setState(prevState => ({
+  //     //   favData: [...prevState.favData, newFav]
+  //     // }));
+  //     store.dispatch({
+  //     type: 'ADD_FAV_DATA',
+  //     data: newFav,
+  //   })
+  //   console.log(store.getState())
   // }
 
   render() {
@@ -198,7 +225,7 @@ export default class FontCardContainer extends Component<Props, State> {
                 addFavorite={this.props.addFavorite}
                 deleteFavorite={this.props.deleteFavorite}
                 variants = {this.props.variants}
-                changeFavStatus = {this.changeFavStatus}
+                // changeFavStatus = {this.changeFavStatus}
                 addOrRemoveFav={this.addOrRemoveFav}
                 formattedFontFamily={this.state.formattedFontFamily}
                 isInFav={this.state.isInFav}
