@@ -31,20 +31,14 @@ export function isFontDataLoaded(isFontDataLoaded = false, action) {
 }
 
 export function favData(favData = [], action) {
+    console.log(action.data)
     switch (action.type) {
         case 'ADD_FAV_DATA':
             return [
                 ...favData,
-                ...action.data
+                action.data
             ]
         case 'REMOVE_FAV_DATA':
-            // return [
-            //     ...favData,
-            //     ...action.data
-            // ]
-            // prevState.favData.filter(fav => {
-            //   return fav.id !== id;
-            // });
             return favData.filter((fav) => {
                 return fav.id !== action.favId;
             })

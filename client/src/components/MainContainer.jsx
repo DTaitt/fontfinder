@@ -92,20 +92,20 @@ export default class MainContainer extends Component<Props, State> {
   //   //console.log(store.getState())
   // }
 
-  async deleteFavorite(id: string) {
-    try {
-      await axios.delete(`/favorites/${id}`);
-    } catch (error) {
-      console.log(`Error deleting Idea with ID of ${id}`);
-      console.log(error);
-    }
+  // async deleteFavorite(id: string) {
+  //   try {
+  //     await axios.delete(`/favorites/${id}`);
+  //   } catch (error) {
+  //     console.log(`Error deleting Idea with ID of ${id}`);
+  //     console.log(error);
+  //   }
 
-    this.setState(prevState => ({
-      favData: prevState.favData.filter(fav => {
-        return fav.id !== id;
-      })
-    }));
-  }
+  //   this.setState(prevState => ({
+  //     favData: prevState.favData.filter(fav => {
+  //       return fav.id !== id;
+  //     })
+  //   }));
+  // }
 
   handleSearch(searchQuery: string) {
     this.setState({

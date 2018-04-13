@@ -19,15 +19,15 @@ export default function FavItemContainer(props: Props) {
         formattedFontFamily = joinedFontFamily;
     }
 
-    formatFontFamily();
-    console.log(props)
+    // formatFontFamily();
+    // console.log(props)
     return (
         <Fragment>
             <FavItem 
                 id = {props.id}
                 family = {props.family}
                 category = {props.category}
-                url = {`https://fonts.google.com/specimen/${formattedFontFamily}`}
+                url = {`https://fonts.google.com/specimen/${props.family}`}
                 // deleteFavorite={props.deleteFavorite}
                 // formattedFontFamily={formattedFontFamily}
             />

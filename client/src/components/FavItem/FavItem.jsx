@@ -33,6 +33,7 @@ export default function FavItem(props:Props){
             type: 'REMOVE_FAV_DATA',
             favId: id,
         })
+        console.log(store.getState().favData)
     }
 
     return(
