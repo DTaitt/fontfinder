@@ -47,7 +47,7 @@ export default class MainContainer extends Component<Props, State> {
       return {...font, isInFav: false }
     })
     store.dispatch({
-      type: 'ADD_FONT_DATA',
+      type: 'INITIALIZE_FONT_DATA',
       data: updatedRes.slice(0,36),
     })
     store.dispatch({
@@ -58,7 +58,7 @@ export default class MainContainer extends Component<Props, State> {
   async fetchToFavoritesAPI() {
     const res = await axios.get(`/favorites`);
     store.dispatch({
-      type: 'ADD_FAV_DATA',
+      type: 'INITIALIZE_FAV_DATA',
       data: res.data,
     })
     store.dispatch({

@@ -11,7 +11,7 @@ export default FontFinderApp;
 
 export function fontData(fontData = [], action) {
     switch(action.type) {
-        case 'ADD_FONT_DATA':
+        case 'INITIALIZE_FONT_DATA':
             return [
                 ...fontData,
                 ...action.data
@@ -31,12 +31,16 @@ export function isFontDataLoaded(isFontDataLoaded = false, action) {
 }
 
 export function favData(favData = [], action) {
-    console.log(action.data)
     switch (action.type) {
+        case 'INITIALIZE_FAV_DATA':
+            return [
+                ...favData,
+                ...action.data
+            ]
         case 'ADD_FAV_DATA':
             return [
                 ...favData,
-                action.data
+                action.new
             ]
         case 'REMOVE_FAV_DATA':
             return favData.filter((fav) => {

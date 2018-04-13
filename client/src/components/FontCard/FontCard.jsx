@@ -52,15 +52,8 @@ export default function FontCard(props:Props){
         //adds the favorite object if its not already added to favorites
         isInFav === false && store.dispatch({
             type: "ADD_FAV_DATA",
-            data: {
-              id: props.id,
-              family: props.family,
-              category: props.category,
-              url: props.url
-            }
+            new: newFav,
           });
-        console.log(fav)
-        console.log(store.getState().favData)
     }
 
     return(
