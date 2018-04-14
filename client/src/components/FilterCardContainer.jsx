@@ -56,30 +56,17 @@ export default class FilterCardContainer extends Component<Props, State> {
   handleVariantInputChange = this.handleVariantInputChange.bind(this);
 
   handleSearchInputChange(e: any) {
-    // console.log(e.target.value)
-    // this.setState(
-    //   {
-    //     value: e.target.value
-    //   },
-    //   () => {
-    //     this.props.handleSearch(this.state.value.toLowerCase());
-    //   }
-    // );
     store.dispatch({
-      type: 'UPDATE_VALUE',
+      type: 'UPDATE_SEARCH_VALUE',
       value: e.target.value.toLowerCase()
     })
   }
 
   handleCategoryInputChange(e: any) {
-    this.setState(
-      {
-        categoryValue: e.target.value
-      },
-      () => {
-        this.props.handleCategory(this.state.categoryValue.toLowerCase());
-      }
-    );
+    store.dispatch({
+      type: "UPDATE_CATEGORY_VALUE",
+      value: e.target.value.toLowerCase()
+    });
   }
 
   handleVariantInputChange(e: any) {

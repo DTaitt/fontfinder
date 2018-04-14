@@ -22,6 +22,7 @@ export default function CardDisplay (props) {
 
     let fontData = store.getState().fontData;
     let searchValue = store.getState().searchValue;
+    let categoryValue = store.getState().categoryValue;
 
     function filterOnSearchQuery() {
         fontData = fontData.filter((font) => {
@@ -30,13 +31,11 @@ export default function CardDisplay (props) {
     }
 
     function filterOnCategoryValue() {
-        if (props.categoryValue === "view all") {
-        return fontData;
-        } else {
-        fontData = fontData.filter(font => {
-            return font.category.indexOf(props.categoryValue) !== -1;
+        categoryValue === "view all"
+        ? fontData
+        : fontData = fontData.filter(font => {
+            return font.category === categoryValue;
         });
-        }
     }
 
     function filterOnVariantValues() {
@@ -65,7 +64,7 @@ export default function CardDisplay (props) {
 
     // only runs these functions when a query is sent
     store.getState().searchValue !== "" && filterOnSearchQuery();
-    // props.categoryValue !== "" && filterOnCategoryValue();
+    store.getState().categoryValue !== "" && filterOnCategoryValue();
     // props.variantValues.length > 0 && filterOnVariantValues();
     // console.log(fontData)
 
