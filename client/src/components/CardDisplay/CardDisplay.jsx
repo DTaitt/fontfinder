@@ -71,30 +71,25 @@ export default function CardDisplay (props) {
     filterOnSearchQuery();
     filterOnCategoryValue();
     variantValues.length > 0 && filterOnVariantValues();
-    // console.log(fontData)
 
-    // render() {
-        // console.log(store.getState().fontData)
-        return(
-            <section className="card-display">
-                {
-                    fontData.map((font) => {
-                    // this.state.currentFontsData.map((font) => {
-                        return (
-                            <FontCardContainer 
-                                key = {font.family}
-                                id = {font.family}
-                                family = {font.family}
-                                category = {font.category}
-                                url = {`https://fonts.google.com/specimen/${font.family}`}
-                                addFavorite={props.addFavorite}
-                                deleteFavorite={props.deleteFavorite}
-                                variants = {font.variants}
-                            />
-                        )
-                    })
-                }
-            </section>
-        )
-    // }
+    return(
+        <section className="card-display">
+            {
+                fontData.map((font) => {
+                    return (
+                        <FontCardContainer 
+                            key = {font.family}
+                            id = {font.family}
+                            family = {font.family}
+                            category = {font.category}
+                            url = {`https://fonts.google.com/specimen/${font.family}`}
+                            addFavorite={props.addFavorite}
+                            deleteFavorite={props.deleteFavorite}
+                            variants = {font.variants}
+                        />
+                    )
+                })
+            }
+        </section>
+    )
 }

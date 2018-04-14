@@ -25,19 +25,8 @@ export default function Main (props:Props) {
         <main>
             <div className="my-container">
                 <CardDisplayContainer 
-                    fontData = {store.getState().fontData} 
-                    // addFavorite={props.addFavorite} 
-                    // deleteFavorite={props.deleteFavorite}
-                    // searchQuery={props.searchQuery} 
-                    // categoryValue={props.categoryValue} 
-                    // variantValues={props.variantValues} 
                 />
-                <Sidebar 
-                    favData = {props.favData} 
-                    // deleteFavorite={props.deleteFavorite} 
-                    handleSearch={props.handleSearch} 
-                    // handleCategory={props.handleCategory} 
-                    // handleVariants={props.handleVariants} 
+                <Sidebar  
                 />
             </div>
         </main>

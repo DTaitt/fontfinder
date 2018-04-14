@@ -20,12 +20,12 @@ type Fav = {
 };
 
 export default function FavCard(props:Props) {
+    const favData = store.getState().favData;
     return(
         <div className='fav-card'>
             <Collection>
                 {
-                    // props.favData.map((fav:Fav) => {
-                    store.getState().favData.map((fav:Fav) => {
+                    favData.map((fav:Fav) => {
                         return(
                             <FavItemContainer 
                                 key = {fav.id}
@@ -33,8 +33,6 @@ export default function FavCard(props:Props) {
                                 family = {fav.family}
                                 category = {fav.category}
                                 url = {`https://fonts.google.com/specimen/${fav.family}`}
-                                // deleteFavorite={props.deleteFavorite}
-                                // isInFav = {false}
                             />
                         )
                     })

@@ -6,6 +6,7 @@ import axios from 'axios';
 import store from './../../redux/store'
 
 import {CardPanel, Button, Modal, Dropdown, Collection, CollectionItem} from 'react-materialize';
+import {favData} from '../../redux/reducers';
 
 type newFav = {
     id: string,
@@ -27,6 +28,7 @@ type Props = {
 }
 
 export default function FontCard(props:Props){
+    let favData = store.getState().favData;
 
     const newFav = {
         id: props.id,
@@ -36,7 +38,6 @@ export default function FontCard(props:Props){
     }
 
     async function addFavorite(fav) {
-        //console.log('test')
         try {
             await axios.post(`/favorites`, fav);
         } catch (error) {
@@ -45,8 +46,8 @@ export default function FontCard(props:Props){
 
         //sets isInFav to true if the favorite object is already in favorites
         let isInFav = false;
-        for (let i = 0; i < store.getState().favData; i++) {
-            fav.id === store.getState().favData[i].id && (isInFav = true);
+        for (let i = 0; i < favData; i++) {
+            fav.id === favData[i].id && (isInFav = true);
         }
 
         //adds the favorite object if its not already added to favorites

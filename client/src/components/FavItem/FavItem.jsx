@@ -18,22 +18,16 @@ export default function FavItem(props:Props){
 
     async function deleteFavorite(id: string) {
         try {
-        await axios.delete(`/favorites/${id}`);
+            await axios.delete(`/favorites/${id}`);
         } catch (error) {
-        console.log(`Error deleting Idea with ID of ${id}`);
-        console.log(error);
+            console.log(`Error deleting Idea with ID of ${id}`);
+            console.log(error);
         }
 
-        // this.setState(prevState => ({
-        //     favData: prevState.favData.filter(fav => {
-        //         return fav.id !== id;
-        //     })
-        // }));
         store.dispatch({
             type: 'REMOVE_FAV_DATA',
             favId: id,
         })
-        // console.log(store.getState().favData)
     }
 
     return(

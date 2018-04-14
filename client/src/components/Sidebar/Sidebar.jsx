@@ -21,16 +21,11 @@ export default function Sidebar(props:Props){
             <Collapsible accordion>
                 <CollapsibleItem header='Filter' icon='search'>
                     <FilterCardContainer 
-                        handleSearch={props.handleSearch} 
-                        // handleCategory={props.handleCategory} 
-                        // handleVariants = {props.handleVariants} 
                         />
                 </CollapsibleItem>
                 <Badge>{store.getState().favData.length}</Badge>
                 <CollapsibleItem header='Favorites' icon='favorite' className='favorite'>
                     <FavCard 
-                        favData = {store.getState().favorites} 
-                        // deleteFavorite={props.deleteFavorite} 
                     />
                 </CollapsibleItem>
             </Collapsible>

@@ -1,10 +1,10 @@
 // @flow
 import React, { Component, Fragment } from "react";
 import axios from "axios";
-import { ProgressBar } from "react-materialize";
 
 import Main from './Main/Main';
 import store from './../redux/store';
+import {isFontDataLoaded, fontData} from '../redux/reducers';
 
 type Props = {};
 type State = {
@@ -18,21 +18,6 @@ type State = {
 };
 
 export default class MainContainer extends Component<Props, State> {
-  state: State = {
-    fontData: [],
-    isFontsDataLoaded: false,
-    favData: [],
-    isfavDataLoaded: false,
-    searchQuery: "",
-    categoryValue: "",
-    variantValues: []
-  };
-
-  // addFavorite = this.addFavorite.bind(this);
-  // deleteFavorite = this.deleteFavorite.bind(this);
-  handleSearch = this.handleSearch.bind(this);
-  // handleCategory = this.handleCategory.bind(this);
-  // handleVariants = this.handleVariants.bind(this);
 
   componentDidMount() {
     this.fetchFontsData("popularity");
@@ -66,42 +51,14 @@ export default class MainContainer extends Component<Props, State> {
     })
   }
 
-  handleSearch(searchQuery: string) {
-    this.setState({
-      searchQuery: searchQuery
-    });
-  }
-
-  handleCategory(categoryValue: string) {
-    this.setState({
-      categoryValue: categoryValue
-    });
-  }
-
-  handleVariants(variantValues: string[]) {
-    this.setState({
-      variantValues: variantValues
-    });
-  }
-
   render() {
+    let isFontDataLoaded = store.getState().isFontDataLoaded
+    let fontData = store.getState().fontData
     return (
         <Fragment>
             {
-                store.getState().isFontDataLoaded// && store.getState().isFavDataLoaded
-                ? <Main 
-                    fontData={store.getState().fontData}
-                    // addFavorite={this.addFavorite}
-                    // deleteFavorite={this.deleteFavorite}
-                    // searchQuery={this.state.searchQuery}
-                    // categoryValue={this.state.categoryValue}
-                    // variantValues={this.state.variantValues}
-                    // favData={store.getState().favData}
-                    handleSearch={this.handleSearch}
-                    // handleCategory={this.handleCategory}
-                    // handleVariants={this.handleVariants}
-                />
-                : <p>Loading...</p>
+                isFontDataLoaded
+                && <Main fontData={fontData} />
             }
         </Fragment>
     );

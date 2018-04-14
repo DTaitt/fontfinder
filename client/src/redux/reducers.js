@@ -19,8 +19,11 @@ export function fontData(fontData = [], action) {
                 ...fontData,
                 ...action.data
             ];
-        case 'UPDATE_FONT_DATA':
-            return action.updated    
+        case 'UPDATE_FONT_DATA_FAV_STATUS':
+            return [
+                ...fontData,
+                action.updatedFav
+            ] 
         default:
             return fontData;
     }

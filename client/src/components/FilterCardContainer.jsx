@@ -72,30 +72,6 @@ export default class FilterCardContainer extends Component<Props, State> {
   handleVariantInputChange(e: any) {
     e.persist();
 
-    // // if an element variant value isn't in the arry it adds it
-    // if (this.state.variantValues.includes(e.target.value) === false) {
-    //   this.setState(
-    //     prevState => ({
-    //       variantValues: [...prevState.variantValues, e.target.value]
-    //     }),
-    //     () => {
-    //       this.props.handleVariants(this.state.variantValues);
-    //     }
-    //   );
-    // } else {
-    //   // if it's already in the array, it removes it
-    //   this.setState(
-    //     prevState => ({
-    //       variantValues: prevState.variantValues.filter(variant => {
-    //         return variant !== e.target.value;
-    //       })
-    //     }),
-    //     () => {
-    //       this.props.handleVariants(this.state.variantValues);
-    //     }
-    //   );
-    // }
-
     if (store.getState().variantValues.includes(e.target.value) === false) {
       store.dispatch({
         type: "ADD_VARIANT_VALUE",
