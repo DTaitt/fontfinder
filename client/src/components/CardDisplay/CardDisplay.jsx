@@ -23,11 +23,15 @@ export default function CardDisplay (props) {
     let fontData = store.getState().fontData;
     let searchValue = store.getState().searchValue;
     let categoryValue = store.getState().categoryValue;
+    let variantValues = store.getState().variantValues;
 
     function filterOnSearchQuery() {
-        fontData = fontData.filter((font) => {
-        return font.family.toLowerCase().indexOf(searchValue) !== -1;
+        searchValue === ''
+        ? fontData
+        : fontData = fontData.filter((font) => {
+            return font.family.toLowerCase().indexOf(searchValue) !== -1;
         })
+        
     }
 
     function filterOnCategoryValue() {
@@ -43,29 +47,30 @@ export default function CardDisplay (props) {
 
         //finds fonts that have a certain variant e.g. 600italic and adds it to unfilteredFontData
         function addToUnfilteredFontData(variant: string) {
-        unfilteredFontData = [
-            ...unfilteredFontData,
-            ...fontData.filter(font => {
-            return font.variants.indexOf(variant) !== -1;
-            })
-        ];
+            unfilteredFontData = [
+                ...unfilteredFontData,
+                ...fontData.filter(font => {
+                return font.variants.indexOf(variant) !== -1;
+                })
+            ];
         }
 
         //https://stackoverflow.com/questions/9229645/remove-duplicate-values-from-js-array
         //removes the duplicated values that might occur e.g a font having a 600italic variant AND a 700italic variant
         function removeDuplicateFonts(value, index, self) {
-        return self.indexOf(value) === index;
+            return self.indexOf(value) === index;
         }
 
-        props.variantValues.forEach(addToUnfilteredFontData);
+        variantValues.forEach(addToUnfilteredFontData);
 
         fontData = unfilteredFontData.filter(removeDuplicateFonts);
+        console.log(fontData)
     }
 
     // only runs these functions when a query is sent
-    store.getState().searchValue !== "" && filterOnSearchQuery();
-    store.getState().categoryValue !== "" && filterOnCategoryValue();
-    // props.variantValues.length > 0 && filterOnVariantValues();
+    filterOnSearchQuery();
+    filterOnCategoryValue();
+    variantValues.length > 0 && filterOnVariantValues();
     // console.log(fontData)
 
     // render() {

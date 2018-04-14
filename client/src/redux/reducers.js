@@ -7,6 +7,7 @@ const FontFinderApp = combineReducers({
     isFavDataLoaded,
     searchValue,
     categoryValue,
+    variantValues,
 })
 
 export default FontFinderApp;
@@ -80,8 +81,23 @@ export function categoryValue(categoryValue = 'view all', action) {
         case 'UPDATE_CATEGORY_VALUE':
             return action.value
             break;
-    
         default:
             return categoryValue;
+    }
+}
+
+export function variantValues(variantValues = [], action) {
+    switch (action.type) {
+        case 'ADD_VARIANT_VALUE':
+            return [
+                ...variantValues,
+                action.value
+            ]
+        case 'REMOVE_VARIANT_VALUE':
+            return variantValues.filter((variant) => {
+                return variant !== action.value;
+            })
+        default:
+            return variantValues;
     }
 }
