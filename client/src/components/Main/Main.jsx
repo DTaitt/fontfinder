@@ -35,7 +35,7 @@ export default function Main (props:Props) {
                 <Sidebar 
                     favData = {props.favData} 
                     // deleteFavorite={props.deleteFavorite} 
-                    // handleSearch={props.handleSearch} 
+                    handleSearch={props.handleSearch} 
                     // handleCategory={props.handleCategory} 
                     // handleVariants={props.handleVariants} 
                 />

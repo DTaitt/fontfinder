@@ -21,7 +21,7 @@ export default function Sidebar(props:Props){
             <Collapsible accordion>
                 <CollapsibleItem header='Filter' icon='search'>
                     <FilterCardContainer 
-                        // handleSearch={props.handleSearch} 
+                        handleSearch={props.handleSearch} 
                         // handleCategory={props.handleCategory} 
                         // handleVariants = {props.handleVariants} 
                         />

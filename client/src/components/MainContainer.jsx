@@ -30,7 +30,7 @@ export default class MainContainer extends Component<Props, State> {
 
   // addFavorite = this.addFavorite.bind(this);
   // deleteFavorite = this.deleteFavorite.bind(this);
-  // handleSearch = this.handleSearch.bind(this);
+  handleSearch = this.handleSearch.bind(this);
   // handleCategory = this.handleCategory.bind(this);
   // handleVariants = this.handleVariants.bind(this);
 
@@ -66,47 +66,6 @@ export default class MainContainer extends Component<Props, State> {
     })
   }
 
-  // async addFavorite(newFav: Object) {
-  //   //console.log('test')
-  //   try {
-  //     await axios.post(`/favorites`, newFav);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-
-  //   //sets isInFav to true if the favorite object is already in favorites
-  //   let isInFav = false;
-  //   for (let i = 0; i < store.getState().favData; i++) {
-  //     newFav.id === store.getState().favData[i].id && (isInFav = true);
-  //   }
-
-  //   //adds the favorite object if its not already added to favorites
-  //   isInFav === false &&
-  //     // this.setState(prevState => ({
-  //     //   favData: [...prevState.favData, newFav]
-  //     // }));
-  //     store.dispatch({
-  //     type: 'ADD_FAV_DATA',
-  //     data: newFav,
-  //   })
-  //   //console.log(store.getState())
-  // }
-
-  // async deleteFavorite(id: string) {
-  //   try {
-  //     await axios.delete(`/favorites/${id}`);
-  //   } catch (error) {
-  //     console.log(`Error deleting Idea with ID of ${id}`);
-  //     console.log(error);
-  //   }
-
-  //   this.setState(prevState => ({
-  //     favData: prevState.favData.filter(fav => {
-  //       return fav.id !== id;
-  //     })
-  //   }));
-  // }
-
   handleSearch(searchQuery: string) {
     this.setState({
       searchQuery: searchQuery
@@ -138,7 +97,7 @@ export default class MainContainer extends Component<Props, State> {
                     // categoryValue={this.state.categoryValue}
                     // variantValues={this.state.variantValues}
                     // favData={store.getState().favData}
-                    // handleSearch={this.handleSearch}
+                    handleSearch={this.handleSearch}
                     // handleCategory={this.handleCategory}
                     // handleVariants={this.handleVariants}
                 />

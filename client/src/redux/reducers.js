@@ -4,7 +4,8 @@ const FontFinderApp = combineReducers({
     fontData,
     favData,
     isFontDataLoaded,
-    isFavDataLoaded
+    isFavDataLoaded,
+    searchValue
 })
 
 export default FontFinderApp;
@@ -16,6 +17,8 @@ export function fontData(fontData = [], action) {
                 ...fontData,
                 ...action.data
             ];
+        case 'UPDATE_FONT_DATA':
+            return action.updated    
         default:
             return fontData;
     }
@@ -57,5 +60,16 @@ export function isFavDataLoaded(isFavDataLoaded = false, action) {
             return !isFavDataLoaded;
         default:
             return isFavDataLoaded;
+    }
+}
+
+export function searchValue(searchValue = '', action) {
+    switch (action.type) {
+        case 'UPDATE_VALUE':
+            return action.value
+            break;
+    
+        default:
+            return searchValue;
     }
 }

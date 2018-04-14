@@ -1,6 +1,6 @@
 // @flow
 import React, { Component, Fragment } from "react";
-
+import store from './../redux/store'
 import FilterCard from './FilterCard/FilterCard';
 
 type Props = {
@@ -51,19 +51,24 @@ export default class FilterCardContainer extends Component<Props, State> {
     { value: "900italic", label: "Black Italic" }
   ];
 
-  handleSearchInputChange = this.handleSearchInputChange.bind(this);
+  // handleSearchInputChange = this.handleSearchInputChange.bind(this);
   handleCategoryInputChange = this.handleCategoryInputChange.bind(this);
   handleVariantInputChange = this.handleVariantInputChange.bind(this);
 
   handleSearchInputChange(e: any) {
-    this.setState(
-      {
-        value: e.target.value
-      },
-      () => {
-        this.props.handleSearch(this.state.value.toLowerCase());
-      }
-    );
+    // console.log(e.target.value)
+    // this.setState(
+    //   {
+    //     value: e.target.value
+    //   },
+    //   () => {
+    //     this.props.handleSearch(this.state.value.toLowerCase());
+    //   }
+    // );
+    store.dispatch({
+      type: 'UPDATE_VALUE',
+      value: e.target.value.toLowerCase()
+    })
   }
 
   handleCategoryInputChange(e: any) {
