@@ -19,6 +19,8 @@ export default function FavItemContainer(props: Props) {
         formattedFontFamily = joinedFontFamily;
     }
 
+    formatFontFamily()
+
     return (
         <Fragment>
             <FavItem 
@@ -26,6 +28,7 @@ export default function FavItemContainer(props: Props) {
                 family = {props.family}
                 category = {props.category}
                 url = {`https://fonts.google.com/specimen/${props.family}`}
+                formattedFontFamily = {formattedFontFamily}
             />
         </Fragment>
     );

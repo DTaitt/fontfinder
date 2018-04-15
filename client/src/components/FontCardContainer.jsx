@@ -23,19 +23,29 @@ type State = {
   isInFav: boolean,
 };
 
-export default class FontCardContainer extends Component<Props, State> {
-  render() {
-    return (
-        <Fragment>
-            <FontCard 
-                id = {this.props.family}
-                family = {this.props.family}
-                category = {this.props.category}
-                url = {`https://fonts.google.com/specimen/${this.props.family}`}
-                variants = {this.props.variants}
-                isInFav = {this.props.isInFav}
-            />
-        </Fragment>
-    );
+export default function FontCardContainer(props) {
+
+  let formattedFontFamily: string = props.family;
+
+  function formatFontFamily() {
+      let splitFontFamily = props.family.split(" ");
+      let joinedFontFamily = splitFontFamily.join("+");
+      formattedFontFamily = joinedFontFamily;
   }
+
+  formatFontFamily()
+
+  return (
+      <Fragment>
+          <FontCard 
+              id = {props.family}
+              family = {props.family}
+              category = {props.category}
+              url = {`https://fonts.google.com/specimen/${props.family}`}
+              variants = {props.variants}
+              isInFav = {props.isInFav}
+              formattedFontFamily = {formattedFontFamily}
+          />
+      </Fragment>
+  );
 }
