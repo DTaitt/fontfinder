@@ -20,13 +20,13 @@ type Props = {
     category: string,
     url: string,
     variants: string[],
-    addFavorite(newFav:newFav):Promise<void>,
     isInFav: boolean,
-    changeFavStatus():void,
     formattedFontFamily: string,
 }
 
-export default class FontCard extends Component{
+type State = {}
+
+export default class FontCard extends Component<Props, State>{
 
     // componentDidMount() {
     //     store.getState().favData.forEach(fav => {
@@ -39,7 +39,7 @@ export default class FontCard extends Component{
     //     })
     // }
 
-    async addFavorite(fav) {
+    async addFavorite(fav:newFav) {
         try {
             await axios.post(`/favorites`, fav);
         } catch (error) {
@@ -47,7 +47,7 @@ export default class FontCard extends Component{
         }
 
         //adds the favorite object if its not already added to favorites
-        const newFav = {
+        const newFav:newFav = {
             id: this.props.id,
             family: this.props.family,
             category: this.props.category,
@@ -78,25 +78,25 @@ export default class FontCard extends Component{
     }
 
     render() {
-        let favData = store.getState().favData;
+        const favData:Object[] = store.getState().favData;
         // let fontData = store.getState().fontData;
-        let isInFav = this.props.isInFav;
+        let isInFav:boolean = this.props.isInFav;
 
-        const newFav = {
+        const newFav:newFav = {
             id: this.props.id,
             family: this.props.family,
             category: this.props.category,
             url: this.props.url,
         }
 
-        const updatedFav = {
+        const updatedFav:newFav = {
             id: this.props.id,
             family: this.props.family,
             category: this.props.category,
             url: this.props.url,
         }
 
-        const variantOptions = [
+        const variantOptions:Object[] = [
             { value: "100", label: "Thin" },
             { value: "100italic", label: "Thin Italic" },
             { value: "200", label: "Extra-Light" },

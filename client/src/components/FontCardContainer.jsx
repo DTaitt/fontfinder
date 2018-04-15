@@ -13,17 +13,10 @@ type Props = {
   category: string,
   url: string,
   variants: string[],
-  addFavorite(newFav: Object): Promise<void>,
-  deleteFavorite(id: string): Promise<void>,
-};
-
-type State = {
-  formattedFontFamily: string,
-  variants: string[],
   isInFav: boolean,
 };
 
-export default function FontCardContainer(props) {
+export default function FontCardContainer(props:Props) {
 
   let formattedFontFamily: string = props.family;
 

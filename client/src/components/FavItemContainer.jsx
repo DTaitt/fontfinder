@@ -7,7 +7,6 @@ type Props = {
   family: string,
   category: string,
   url: string,
-  deleteFavorite(id: string): Promise<void>
 };
 
 export default function FavItemContainer(props: Props) {

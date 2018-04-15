@@ -5,20 +5,9 @@ import './CardDisplay.css';
 import FontCardContainer from './../FontCardContainer';
 import store from './../../redux/store';
 
-type Props = {
-  fontData: Object[],
-  addFavorite(newFav: Object): Promise<void>,
-  deleteFavorite(id: string): Promise<void>,
-  searchQuery: string,
-  categoryValue: string,
-  variantValues: string[]
-};
+type Props = {};
 
-type State = {
-    currentFontsData: Object[],
-}
-
-export default function CardDisplay (props) {
+export default function CardDisplay (props:Props) {
 
     let fontData = store.getState().fontData;
     let searchValue = store.getState().searchValue;
@@ -83,8 +72,6 @@ export default function CardDisplay (props) {
                             family = {font.family}
                             category = {font.category}
                             url = {`https://fonts.google.com/specimen/${font.family}`}
-                            addFavorite={props.addFavorite}
-                            deleteFavorite={props.deleteFavorite}
                             variants = {font.variants}
                             isInFav = {font.isInFav}
                         />

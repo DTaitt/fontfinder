@@ -3,17 +3,9 @@ import React, { Component, Fragment } from "react";
 import store from './../redux/store'
 import FilterCard from './FilterCard/FilterCard';
 
-type Props = {
-  handleSearch(searchQuery: string): void,
-  handleCategory(categoryValue: string): void,
-  handleVariants(variantValues: string[]): void
-};
+type Props = {}
 
-type State = {
-  value: string,
-  categoryValue: string,
-  variantValues: string[]
-};
+type State = {}
 
 export default class FilterCardContainer extends Component<Props, State> {
 

@@ -6,10 +6,7 @@ import './FavCard.css';
 import FavItemContainer from './../FavItemContainer';
 import store from './../../redux/store';
 
-type Props = {
-    favData:Object[],
-    deleteFavorite(id:string):Promise<void>,
-}
+type Props = {}
 
 type Fav = {
   key: string,

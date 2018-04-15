@@ -7,15 +7,7 @@ import store from './../redux/store';
 import {isFontDataLoaded, fontData} from '../redux/reducers';
 
 type Props = {};
-type State = {
-  fontData: Object[],
-  isFontsDataLoaded: boolean,
-  favData: Object[],
-  isfavDataLoaded: boolean,
-  searchQuery: string,
-  categoryValue: string,
-  variantValues: string[]
-};
+type State = {};
 
 export default class MainContainer extends Component<Props, State> {
 
@@ -52,14 +44,9 @@ export default class MainContainer extends Component<Props, State> {
   }
 
   render() {
-    let isFontDataLoaded = store.getState().isFontDataLoaded
-    let fontData = store.getState().fontData
     return (
         <Fragment>
-            {
-                isFontDataLoaded
-                && <Main fontData={fontData} />
-            }
+            <Main />
         </Fragment>
     );
   }

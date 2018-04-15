@@ -10,7 +10,6 @@ type Props = {
   family: string,
   category: string,
   url: string,
-  deleteFavorite(id: string): Promise<void>,
   formattedFontFamily: string,
 };
 

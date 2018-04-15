@@ -7,26 +7,18 @@ import FavCard from './../FavCard/FavCard';
 import FilterCardContainer from './../FilterCardContainer';
 import store from './../../redux/store';
 
-type Props = {
-    favData:Object[],
-    deleteFavorite(id:string):Promise<void>, 
-    handleSearch(searchQuery:string):void,
-    handleCategory(categoryValue:string):void, 
-    handleVariants(variantValues:string[]):void, 
-}
+type Props = {}
 
 export default function Sidebar(props:Props){
     return(
         <Card className='sidebar cyan darken-2'>
             <Collapsible accordion>
                 <CollapsibleItem header='Filter' icon='search'>
-                    <FilterCardContainer 
-                        />
+                    <FilterCardContainer />
                 </CollapsibleItem>
                 <Badge>{store.getState().favData.length}</Badge>
                 <CollapsibleItem header='Favorites' icon='favorite' className='favorite'>
-                    <FavCard 
-                    />
+                    <FavCard />
                 </CollapsibleItem>
             </Collapsible>
         </Card>  
