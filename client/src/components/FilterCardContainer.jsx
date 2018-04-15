@@ -16,11 +16,6 @@ type State = {
 };
 
 export default class FilterCardContainer extends Component<Props, State> {
-  state: State = {
-    value: "",
-    categoryValue: "sans-serif",
-    variantValues: []
-  };
 
   categoryOptions: string[] = [
     "view all",
@@ -30,6 +25,7 @@ export default class FilterCardContainer extends Component<Props, State> {
     "handwriting",
     "monospace"
   ];
+  
   variantOptions: Object[] = [
     { value: "100", label: "Thin" },
     { value: "100italic", label: "Thin Italic" },
@@ -51,25 +47,21 @@ export default class FilterCardContainer extends Component<Props, State> {
     { value: "900italic", label: "Black Italic" }
   ];
 
-  // handleSearchInputChange = this.handleSearchInputChange.bind(this);
-  handleCategoryInputChange = this.handleCategoryInputChange.bind(this);
-  handleVariantInputChange = this.handleVariantInputChange.bind(this);
-
-  handleSearchInputChange(e: any) {
+  handleSearch(e: any) {
     store.dispatch({
       type: 'UPDATE_SEARCH_VALUE',
       value: e.target.value.toLowerCase()
     })
   }
 
-  handleCategoryInputChange(e: any) {
+  handleCategory(e: any) {
     store.dispatch({
       type: "UPDATE_CATEGORY_VALUE",
       value: e.target.value.toLowerCase()
     });
   }
 
-  handleVariantInputChange(e: any) {
+  handleVariant(e: any) {
     e.persist();
 
     if (store.getState().variantValues.includes(e.target.value) === false) {
@@ -83,22 +75,15 @@ export default class FilterCardContainer extends Component<Props, State> {
         value: e.target.value.toLowerCase(),
       })
     }
-    console.log(store.getState().variantValues)
   }
 
   render() {
     return (
         <Fragment>
             <FilterCard 
-                handleSearch={this.props.handleSearch} 
-                handleSearchInputChange={this.handleSearchInputChange}
-                handleCategory={this.props.handleCategory} 
-                handleCategoryInputChange={this.handleCategoryInputChange}
-                handleVariants = {this.props.handleVariants} 
-                handleVariantInputChange={this.handleVariantInputChange}
-                value={this.state.categoryValue}
-                variantValues={this.state.variantValues}
-                categoryValue={this.state.categoryValue}
+                handleSearch={this.handleSearch}
+                handleCategory={this.handleCategory}
+                handleVariant={this.handleVariant}
                 categoryOptions={this.categoryOptions}
                 variantOptions={this.variantOptions}
             />

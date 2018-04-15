@@ -86,6 +86,7 @@ export default function CardDisplay (props) {
                             addFavorite={props.addFavorite}
                             deleteFavorite={props.deleteFavorite}
                             variants = {font.variants}
+                            isInFav = {font.isInFav}
                         />
                     )
                 })

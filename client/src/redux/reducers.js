@@ -20,10 +20,12 @@ export function fontData(fontData = [], action) {
                 ...action.data
             ];
         case 'UPDATE_FONT_DATA_FAV_STATUS':
-            return [
-                ...fontData,
-                action.updatedFav
-            ] 
+            return fontData.map(font => {
+                if(font.family.toLowerCase() === action.id.toLowerCase()) {
+                    font.isInFav = !font.isInFav;
+                }
+                return font
+            });
         default:
             return fontData;
     }

@@ -4,16 +4,16 @@ import './FilterCard.css';
 
 import {Row, Input, Collection, CollectionItem} from 'react-materialize';
 
-type Props = {
-  handleSearch(searchQuery: string): void,
-  handleCategory(categoryValue: string): void,
-  handleVariants(variantValues: string[]): void,
-  handleSearchInputChange(e:any):void,
-  handleCategoryInputChange(e:any):void,
-  handleVariantInputChange(e:any):void,
-  categoryOptions: string[],
-  variantOptions: Object[],
-};
+// type Props = {
+//   handleSearch(searchQuery: string): void,
+//   handleCategory(categoryValue: string): void,
+//   handleVariants(variantValues: string[]): void,
+//   handleSearch(e:any):void,
+//   handleCategory(e:any):void,
+//   handleVariant(e:any):void,
+//   categoryOptions: string[],
+//   variantOptions: Object[],
+// };
 
 export default function FilterCard(props:Props) {
     return (
@@ -21,7 +21,7 @@ export default function FilterCard(props:Props) {
             <Collection>
                 <CollectionItem className="search">
                     <Row>
-                        <Input s={6} label="Search" validate onChange={props.handleSearchInputChange} />
+                        <Input s={6} label="Search" validate onChange={props.handleSearch} />
                     </Row>
                 </CollectionItem>
                 <CollectionItem className="Categories">
@@ -31,7 +31,7 @@ export default function FilterCard(props:Props) {
                             type="select" 
                             label="Category Type" 
                             defaultValue="0" 
-                            onChange={props.handleCategoryInputChange}
+                            onChange={props.handleCategory}
                         >
                             {
                                 props.categoryOptions.map((option) => {
@@ -42,7 +42,7 @@ export default function FilterCard(props:Props) {
                     </Row>
                 </CollectionItem>
                 <CollectionItem className='variant'>
-                    <Row onChange={props.handleVariantInputChange}>
+                    <Row onChange={props.handleVariant}>
                         {
                             props.variantOptions.map((variant) => {
                                 return (

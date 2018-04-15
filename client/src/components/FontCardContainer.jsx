@@ -33,6 +33,7 @@ export default class FontCardContainer extends Component<Props, State> {
                 category = {this.props.category}
                 url = {`https://fonts.google.com/specimen/${this.props.family}`}
                 variants = {this.props.variants}
+                isInFav = {this.props.isInFav}
             />
         </Fragment>
     );
