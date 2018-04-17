@@ -26,6 +26,12 @@
   },
   "proxy": "http://localhost:8080",
   "devDependencies": {
-    "flow-bin": "^0.69.0"
+    "babel-jest": "^22.4.3",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "flow-bin": "^0.69.0",
+    "react-test-renderer": "^16.3.2"
   }
 }
