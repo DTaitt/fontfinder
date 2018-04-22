@@ -25,7 +25,7 @@ export default class MainContainer extends Component<Props, State> {
     })
     store.dispatch({
       type: 'INITIALIZE_FONT_DATA',
-      data: updatedRes.slice(0,12),
+      data: updatedRes.slice(0,144),
     })
     store.dispatch({
       type: 'UPDATE_FONT_DATA_LOADED_STATUS',
