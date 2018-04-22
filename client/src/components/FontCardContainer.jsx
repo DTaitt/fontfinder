@@ -16,29 +16,50 @@ type Props = {
   isInFav: boolean,
 };
 
-export default function FontCardContainer(props:Props) {
+export default class FontCardContainer extends Component {
 
-  let formattedFontFamily: string = props.family;
+    formattedFontFamily: string = this.props.family;
+    favData = store.getState().favData;
+    //   console.log(favData)
+    found = store.getState().favData.find((fav) => {
+        return fav.id === this.props.id;
+    })
 
-  function formatFontFamily() {
-      let splitFontFamily = props.family.split(" ");
+    componentDidMount() {
+        this.formatFontFamily();
+    }
+    
+    componentDidUpdate(prevProps, prevState) {
+        // (this.found && this.props.isInFav === false)
+        // && 
+        // // console.log(this.props.isInFav)
+        // store.dispatch({
+        //   type: "UPDATE_FONT_DATA_FAV_STATUS",
+        //   id: this.props.id
+        // }); 
+    }
+  
+    formatFontFamily() {
+      let splitFontFamily = this.props.family.split(" ");
       let joinedFontFamily = splitFontFamily.join("+");
-      formattedFontFamily = joinedFontFamily;
-  }
-
-  formatFontFamily()
-
-  return (
-      <Fragment>
-          <FontCard 
-              id = {props.family}
-              family = {props.family}
-              category = {props.category}
-              url = {`https://fonts.google.com/specimen/${props.family}`}
-              variants = {props.variants}
-              isInFav = {props.isInFav}
-              formattedFontFamily = {formattedFontFamily}
-          />
-      </Fragment>
-  );
+      this.formattedFontFamily = joinedFontFamily;
+    }
+        
+    render() {
+        // console.log(`Font Card Container fav status is ${this.props.isInFav.toString()}`)
+        // console.log(store.getState().favData)
+        return (
+             <Fragment>
+                <FontCard 
+                    id = {this.props.family}
+                    family = {this.props.family}
+                    category = {this.props.category}
+                    url = {`https://fonts.google.com/specimen/${this.props.family}`}
+                    variants = {this.props.variants}
+                    isInFav = {this.props.isInFav}
+                    formattedFontFamily = {this.formattedFontFamily}
+                />
+            </Fragment>
+        )
+    }
 }

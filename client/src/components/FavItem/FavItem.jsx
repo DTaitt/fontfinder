@@ -4,6 +4,7 @@ import './FavItem.css';
 import axios from 'axios';
 import {CollectionItem, Button, Modal} from 'react-materialize';
 import store from './../../redux/store';
+import {fontData} from '../../redux/reducers';
 
 type Props = {
   id: string,
@@ -14,6 +15,12 @@ type Props = {
 };
 
 export default function FavItem(props:Props){
+
+    const fontData = store.getState().fontData;
+
+    const found = fontData.find(font => {
+        return font.family === props.family
+    })
 
     async function deleteFavorite(id: string) {
         try {
@@ -29,6 +36,8 @@ export default function FavItem(props:Props){
         })
     }
 
+
+
     return(
         <CollectionItem className='fav-item'>
             <div className="info">
@@ -42,7 +51,11 @@ export default function FavItem(props:Props){
                     className='red' 
                     waves='light' 
                     icon='remove' 
-                    onClick={() => {deleteFavorite(props.id)}}
+                    onClick={
+                        () => {
+                            found && deleteFavorite(props.id);
+                        }
+                    }
                 />
                 <Modal
                     header={props.family}

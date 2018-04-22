@@ -54,7 +54,33 @@ export default class FontCard extends Component<Props, State>{
             url: this.props.url,
         }
 
-        if(this.props.isInFav === false) {
+        let found = store.getState().favData.find(fav => {
+          return fav.id === this.props.id;
+        });
+
+        // console.log(`Font Card fav status before click is ${this.props.isInFav.toString()}`)
+        // if(!found) {
+        //     store.dispatch({
+        //         type: "ADD_FAV_DATA",
+        //         new: newFav,
+        //     });
+    
+        //     store.dispatch({
+        //         type: 'UPDATE_FONT_DATA_FAV_STATUS',
+        //         id: this.props.id,
+        //     })  
+        // } else {
+        //     store.dispatch({
+        //         type: 'REMOVE_FAV_DATA',
+        //         favId: this.props.id,
+        //     })
+        //     store.dispatch({
+        //       type: "UPDATE_FONT_DATA_FAV_STATUS",
+        //       id: this.props.id
+        //     });
+        // }
+        // console.log(`Font Card fav status after click is ${this.props.isInFav.toString()}`);
+        if(!found) {
             store.dispatch({
                 type: "ADD_FAV_DATA",
                 new: newFav,
@@ -64,17 +90,7 @@ export default class FontCard extends Component<Props, State>{
                 type: 'UPDATE_FONT_DATA_FAV_STATUS',
                 id: this.props.id,
             })  
-        } else {
-            store.dispatch({
-                type: 'REMOVE_FAV_DATA',
-                favId: this.props.id,
-            })
-            store.dispatch({
-              type: "UPDATE_FONT_DATA_FAV_STATUS",
-              id: this.props.id
-            });
         }
-
     }
 
     render() {
@@ -82,6 +98,7 @@ export default class FontCard extends Component<Props, State>{
         // let fontData = store.getState().fontData;
         let isInFav:boolean = this.props.isInFav;
 
+        // console.log(store.getState().favData)
         const newFav:newFav = {
             id: this.props.id,
             family: this.props.family,
@@ -149,9 +166,10 @@ export default class FontCard extends Component<Props, State>{
                         // small 
                         className='red' 
                         waves='light' 
-                        icon={
-                            this.props.isInFav ? 'remove' : 'favorite'
-                        } 
+                        // icon={
+                        //     this.props.isInFav ? 'remove' : 'favorite'
+                        // } 
+                        icon='favorite'
                         onClick={() => {
                             // this.props.changeFavStatus()
                             this.addFavorite(newFav)
