@@ -1,9 +1,6 @@
 // @flow
-import React, {Component} from 'react';
+import React from 'react';
 import './FontCard.css';
-
-import axios from 'axios';
-import store from './../../redux/store'
 
 import {CardPanel, Button, Modal, Dropdown, Collection, CollectionItem} from 'react-materialize';
 
@@ -22,11 +19,10 @@ type Props = {
     variants: string[],
     isInFav: boolean,
     formattedFontFamily: string,
+    addFavorite(newFav:newFav):void,
 }
 
-type State = {}
-
-export default function FontCard(props){
+export default function FontCard(props:Props){
     return(
         <CardPanel 
             className="font-card white black-text z-depth-2"

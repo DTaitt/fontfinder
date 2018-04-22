@@ -3,7 +3,6 @@ import './Main.css';
 
 import CardDisplayContainer from './../CardDisplayContainer';
 import Sidebar from './../Sidebar/Sidebar';
-import store from './../../redux/store';
 
 type Props = {}
 

@@ -1,9 +1,8 @@
 // @flow
-import React, {Component} from 'react';
+import React from 'react';
 import './CardDisplay.css';
 
 import FontCardContainer from './../FontCardContainer';
-import store from './../../redux/store';
 
 type Props = {};
 

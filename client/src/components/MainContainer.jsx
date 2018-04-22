@@ -4,7 +4,6 @@ import axios from "axios";
 
 import Main from './Main/Main';
 import store from './../redux/store';
-import {isFontDataLoaded, fontData} from '../redux/reducers';
 
 type Props = {};
 type State = {};

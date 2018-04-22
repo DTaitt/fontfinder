@@ -74,8 +74,6 @@ export function searchValue(searchValue = '', action) {
     switch (action.type) {
         case 'UPDATE_SEARCH_VALUE':
             return action.value
-            break;
-    
         default:
             return searchValue;
     }
@@ -85,7 +83,6 @@ export function categoryValue(categoryValue = 'view all', action) {
     switch (action.type) {
         case 'UPDATE_CATEGORY_VALUE':
             return action.value
-            break;
         default:
             return categoryValue;
     }

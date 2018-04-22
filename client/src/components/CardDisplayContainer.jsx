@@ -15,7 +15,7 @@ export default function CardDisplayContainer(props: Props) {
   let variantValues = store.getState().variantValues;
 
   function filterOnSearchQuery() {
-      searchValue === ''
+      (searchValue === '')
       ? fontData
       : fontData = fontData.filter((font) => {
           return font.family.toLowerCase().indexOf(searchValue) !== -1;

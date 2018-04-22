@@ -4,7 +4,6 @@ import FavItem from './FavItem/FavItem';
 
 import axios from "axios";
 import store from './../redux/store'
-import { fontData } from "./../redux/reducers";
 
 type Props = {
   id: string,

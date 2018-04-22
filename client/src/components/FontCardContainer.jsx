@@ -1,9 +1,7 @@
 // @flow
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 import axios from 'axios'
 import store from './../redux/store';
-import { toggleFavStatus } from './../redux/reducers';
-import { UPDATE_FAV_STATUS } from './../redux/actions';
 
 import FontCard from './FontCard/FontCard';
 
@@ -16,14 +14,10 @@ type Props = {
   isInFav: boolean,
 };
 
-export default function FontCardContainer(props) {
+export default function FontCardContainer(props:Props) {
 
     // FORMATTING FONT FAMILY IN MODAL
     let formattedFontFamily: string = props.family;
-    const favData = store.getState().favData;
-    const found = store.getState().favData.find((fav) => {
-        return fav.id === props.id;
-    })
   
     function formatFontFamily() {
       let splitFontFamily = props.family.split(" ");
@@ -49,21 +43,14 @@ export default function FontCardContainer(props) {
         }
 
         //adds the favorite object if its not already added to favorites
-        const newFav:newFav = {
-            id: props.id,
-            family: props.family,
-            category: props.category,
-            url: props.url,
-        }
-
-        let found = store.getState().favData.find(fav => {
+        let currentFav = store.getState().favData.find(fav => {
           return fav.id === props.id;
         });
 
-        if(!found) {
+        if(!currentFav) {
             store.dispatch({
                 type: "ADD_FAV_DATA",
-                new: newFav,
+                new: fav,
             });
     
             store.dispatch({
