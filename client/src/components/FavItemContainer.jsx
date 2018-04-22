@@ -2,6 +2,10 @@
 import React, {Fragment} from "react";
 import FavItem from './FavItem/FavItem';
 
+import axios from "axios";
+import store from './../redux/store'
+import { fontData } from "./../redux/reducers";
+
 type Props = {
   id: string,
   family: string,
@@ -10,6 +14,7 @@ type Props = {
 };
 
 export default function FavItemContainer(props: Props) {
+    // FORMAT FONT FAMILY
     let formattedFontFamily: string = props.family;
 
     function formatFontFamily() {
@@ -18,7 +23,28 @@ export default function FavItemContainer(props: Props) {
         formattedFontFamily = joinedFontFamily;
     }
 
-    formatFontFamily()
+    formatFontFamily();
+
+    // SETUP DELETE FAV FUNCTION
+    const fontData = store.getState().fontData;
+
+    const currentFav = fontData.find(font => {
+        return font.family === props.family
+    })
+
+    async function deleteFavorite(id: string) {
+        try {
+            await axios.delete(`/favorites/${id}`);
+        } catch (error) {
+            console.log(`Error deleting Idea with ID of ${id}`);
+            console.log(error);
+        }
+
+        store.dispatch({
+            type: 'REMOVE_FAV_DATA',
+            favId: id,
+        })
+    }
 
     return (
         <Fragment>
@@ -28,6 +54,8 @@ export default function FavItemContainer(props: Props) {
                 category = {props.category}
                 url = {`https://fonts.google.com/specimen/${props.family}`}
                 formattedFontFamily = {formattedFontFamily}
+                deleteFavorite={deleteFavorite}
+                currentFav={currentFav}
             />
         </Fragment>
     );
