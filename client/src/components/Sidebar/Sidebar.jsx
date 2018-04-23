@@ -4,7 +4,7 @@ import { Collapsible, CollapsibleItem, Card, Badge } from 'react-materialize';
 import './Sidebar.css';
 
 import FavCard from './../FavCard/FavCard';
-import FilterCardContainer from './../FilterCardContainer';
+import FilterCardContainer from './../FilterCardContainer/FilterCardContainer';
 import store from './../../redux/store';
 
 type Props = {}

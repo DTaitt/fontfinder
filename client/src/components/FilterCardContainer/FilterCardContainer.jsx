@@ -1,8 +1,8 @@
 // @flow
 import React, { Component, Fragment } from "react";
-import store from './../redux/store'
-import FilterCard from './FilterCard/FilterCard';
-import { updateSearchValue, updateCategoryValue, addVariantValue , removeVariantValue} from "../redux/actions";
+import store from './../../redux/store'
+import FilterCard from './../FilterCard/FilterCard';
+import { updateSearchValue, updateCategoryValue, addVariantValue , removeVariantValue} from "./../../redux/actions";
 
 type Props = {}
 
