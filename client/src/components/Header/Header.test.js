@@ -6,6 +6,8 @@ enzyme.configure({ adapter: new Adapter() });
 
 import Header from './Header';
 
+const HeaderWrapper = shallow(<Header />);
+
 const HeaderComponent = (
   <header>
     <div className="my-container">
@@ -15,10 +17,7 @@ const HeaderComponent = (
 );
 
 describe("Header", function() {
-  it("should render <Navbar /> without throwing an error", function() {
-    expect(shallow(<Header />).contains(<Navbar brand='Font Finder' />)).toBe(true);
-  });
   it("should render <Header /> without throwing an error", function() {
-    expect(shallow(<Header />).contains(HeaderComponent)).toBe(true);
+    expect(HeaderWrapper.contains(HeaderComponent)).toBe(true);
   });
 });

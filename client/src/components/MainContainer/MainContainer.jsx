@@ -2,9 +2,9 @@
 import React, { Component, Fragment } from "react";
 import axios from "axios";
 
-import Main from './Main/Main';
-import store from './../redux/store';
-import { initializeFontData, updateFontDataLoadedStatus, initializeFavData , updateFavDataLoadedStatus} from "../redux/actions";
+import Main from './../Main/Main';
+import store from './../../redux/store';
+import { initializeFontData, updateFontDataLoadedStatus, initializeFavData , updateFavDataLoadedStatus} from "./../../redux/actions";
 
 type Props = {};
 type State = {};

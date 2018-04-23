@@ -4,21 +4,17 @@ import Adapter from "enzyme-adapter-react-16";
 
 import App from './App';
 import Header from './components/Header/Header';
-import MainContainer from './components/MainContainer';
+import MainContainer from './components/MainContainer/MainContainer';
 
 enzyme.configure({ adapter: new Adapter() });
 
-
+const AppWrapper = shallow(<App />)
 describe("App", function() {
   it("should render <Header /> without throwing an error", function() {
-    expect(shallow(<App />).contains(<Header />)).toBe(
-      true
-    );
+    expect(AppWrapper.contains(<Header />)).toBe(true);
   });
 
   it("should render <MainContainer /> without throwing an error", function() {
-    expect(shallow(<App />).contains(<MainContainer />)).toBe(
-      true
-    );
+    expect(AppWrapper.contains(<MainContainer />)).toBe(true);
   });
 });

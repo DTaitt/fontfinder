@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Header from './components/Header/Header'
-import MainContainer from './components/MainContainer'
+import MainContainer from './components/MainContainer/MainContainer'
 
 type Props = {}
 type State = {}
