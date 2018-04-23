@@ -4,6 +4,7 @@ import axios from 'axios'
 import store from './../redux/store';
 
 import FontCard from './FontCard/FontCard';
+import { updateFontDataFavStatus, addFavData } from "../redux/actions";
 
 type Props = {
   id: string,
@@ -48,15 +49,8 @@ export default function FontCardContainer(props:Props) {
         });
 
         if(!currentFav) {
-            store.dispatch({
-                type: "ADD_FAV_DATA",
-                new: fav,
-            });
-    
-            store.dispatch({
-                type: 'UPDATE_FONT_DATA_FAV_STATUS',
-                id: props.id,
-            })  
+            store.dispatch(addFavData(fav));
+            store.dispatch(updateFontDataFavStatus(props.id))  
         }
     }
 

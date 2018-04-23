@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
 
-const FontFinderApp = combineReducers({
+const rootReducer = combineReducers({
     fontData,
     favData,
     isFontDataLoaded,
@@ -10,7 +10,7 @@ const FontFinderApp = combineReducers({
     variantValues,
 })
 
-export default FontFinderApp;
+export default rootReducer;
 
 export function fontData(fontData = [], action) {
     switch(action.type) {

@@ -1,12 +1,6 @@
 import {createStore} from 'redux';
+import rootReducer from './reducers';
 
-import FontFinderApp from './reducers';
+const store = createStore(rootReducer);
 
-
-const store = createStore(FontFinderApp);
-//console.log(store.getState())
-// store.dispatch({ type: "UPDATE_FAV_STATUS" });
-// console.log(store.getState());
-// store.dispatch({ type: "UPDATE_FAV_STATUS" });
-// console.log(store.getState());
 export default store;

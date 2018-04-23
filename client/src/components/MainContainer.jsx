@@ -4,6 +4,7 @@ import axios from "axios";
 
 import Main from './Main/Main';
 import store from './../redux/store';
+import { initializeFontData, updateFontDataLoadedStatus, initializeFavData , updateFavDataLoadedStatus} from "../redux/actions";
 
 type Props = {};
 type State = {};
@@ -22,24 +23,14 @@ export default class MainContainer extends Component<Props, State> {
     const updatedRes = res.data.items.map((font:Object) => {
       return {...font, isInFav: false }
     })
-    store.dispatch({
-      type: 'INITIALIZE_FONT_DATA',
-      data: updatedRes.slice(0,144),
-    })
-    store.dispatch({
-      type: 'UPDATE_FONT_DATA_LOADED_STATUS',
-    })
+    store.dispatch(initializeFontData(updatedRes.slice(0,72)))
+    store.dispatch(updateFontDataLoadedStatus())
   }
 
   async fetchToFavoritesAPI() {
     const res = await axios.get(`/favorites`);
-    store.dispatch({
-      type: 'INITIALIZE_FAV_DATA',
-      data: res.data,
-    })
-    store.dispatch({
-      type: 'UPDATE_FAV_DATA_LOADED_STATUS'
-    })
+    store.dispatch(initializeFavData(res.data))
+    store.dispatch(updateFavDataLoadedStatus())
   }
 
   render() {

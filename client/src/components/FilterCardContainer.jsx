@@ -2,6 +2,7 @@
 import React, { Component, Fragment } from "react";
 import store from './../redux/store'
 import FilterCard from './FilterCard/FilterCard';
+import { updateSearchValue, updateCategoryValue, addVariantValue , removeVariantValue} from "../redux/actions";
 
 type Props = {}
 
@@ -40,32 +41,20 @@ export default class FilterCardContainer extends Component<Props, State> {
   ];
 
   handleSearch(e: any) {
-    store.dispatch({
-      type: 'UPDATE_SEARCH_VALUE',
-      value: e.target.value.toLowerCase()
-    })
+    store.dispatch(updateSearchValue(e.target.value.toLowerCase()))
   }
 
   handleCategory(e: any) {
-    store.dispatch({
-      type: "UPDATE_CATEGORY_VALUE",
-      value: e.target.value.toLowerCase()
-    });
+    store.dispatch(updateCategoryValue(e.target.value.toLowerCase()));
   }
 
   handleVariant(e: any) {
     e.persist();
 
     if (store.getState().variantValues.includes(e.target.value) === false) {
-      store.dispatch({
-        type: "ADD_VARIANT_VALUE",
-        value: e.target.value.toLowerCase(),
-      });
+      store.dispatch(addVariantValue(e.target.value.toLowerCase()));
     } else {
-      store.dispatch({
-        type: 'REMOVE_VARIANT_VALUE',
-        value: e.target.value.toLowerCase(),
-      })
+      store.dispatch(removeVariantValue(e.target.value.toLowerCase()))
     }
   }
 

@@ -4,6 +4,7 @@ import FavItem from './FavItem/FavItem';
 
 import axios from "axios";
 import store from './../redux/store'
+import { removeFavData } from "../redux/actions";
 
 type Props = {
   id: string,
@@ -39,10 +40,7 @@ export default function FavItemContainer(props: Props) {
             console.log(error);
         }
 
-        store.dispatch({
-            type: 'REMOVE_FAV_DATA',
-            favId: id,
-        })
+        store.dispatch(removeFavData(id))
     }
 
     return (
